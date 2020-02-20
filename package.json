@@ -1,0 +1,18 @@
+{
+  "name": "show-hide-section",
+  "version": "1.0.0",
+  "description": "An interactive heading that enables users to reveal or hide its associated content",
+  "author": "Happy Prime",
+  "license": "GPL-2.0-or-later",
+  "devDependencies": {
+    "@wordpress/scripts": "^7.1.0"
+  },
+  "scripts": {
+    "start": "wp-scripts start",
+    "build": "wp-scripts build src/index.js src/front-end.js --output-path=build/",
+    "lint:js": "wp-scripts lint-js ./src",
+    "fix:js": "wp-scripts lint-js ./src --fix",
+    "lint:css": "wp-scripts lint-style './src/style.css'",
+    "fix:css": "wp-scripts lint-style './src/style.css' --fix"
+  }
+}
