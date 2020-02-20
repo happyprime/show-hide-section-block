@@ -69,7 +69,7 @@ registerBlockType( 'happyprime/show-hide-section', {
 				</BlockControls>
 				<RichText
 					className="show-hide-toggle"
-					formattingControls={ [ 'bold', 'italic' ] }
+					allowedFOrmats={ [ 'bold', 'italic' ] }
 					keepPlaceholderOnFocus
 					onChange={ ( value ) =>
 						setAttributes( { heading: value } )
