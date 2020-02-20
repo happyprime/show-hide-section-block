@@ -50,7 +50,6 @@ function register_block() {
 		'happyprime/show-hide-section',
 		array(
 			'editor_script' => 'happyprime-show-hide-section',
-			'script'        => 'happyprime-show-hide-section-front-end',
 			'style'         => 'happyprime-show-hide-section',
 		)
 	);
