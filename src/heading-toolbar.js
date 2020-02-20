@@ -8,7 +8,7 @@ const { __, sprintf } = wp.i18n;
 
 const { Component } = wp.element;
 
-const { Path, SVG, ToolbarGroup } = wp.components;
+const { Path, SVG, Toolbar } = wp.components;
 
 function HeadingLevelIcon( { level, isPressed = false } ) {
 	const levelToPath = {
@@ -57,7 +57,6 @@ class HeadingToolbar extends Component {
 
 	render() {
 		const {
-			isCollapsed = true,
 			minLevel,
 			maxLevel,
 			selectedLevel,
@@ -65,13 +64,10 @@ class HeadingToolbar extends Component {
 		} = this.props;
 
 		return (
-			<ToolbarGroup
-				isCollapsed={ isCollapsed }
-				icon={ <HeadingLevelIcon level={ selectedLevel } /> }
+			<Toolbar
 				controls={ range( minLevel, maxLevel ).map( ( index ) =>
 					this.createLevelControl( index, selectedLevel, onChange )
 				) }
-				label={ __( 'Change heading level' ) }
 			/>
 		);
 	}
