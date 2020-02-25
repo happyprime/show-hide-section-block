@@ -6,9 +6,9 @@ import { range } from 'lodash';
 
 const { __, sprintf } = wp.i18n;
 
-const { Component } = wp.element;
+const { Component, Fragment } = wp.element;
 
-const { Path, SVG, Toolbar } = wp.components;
+const { Path, SVG, Toolbar, ToolbarGroup } = wp.components;
 
 function HeadingLevelIcon( { level, isPressed = false } ) {
 	const levelToPath = {
@@ -57,6 +57,7 @@ class HeadingToolbar extends Component {
 
 	render() {
 		const {
+			isCollapsed = true,
 			minLevel,
 			maxLevel,
 			selectedLevel,
@@ -64,11 +65,32 @@ class HeadingToolbar extends Component {
 		} = this.props;
 
 		return (
-			<Toolbar
-				controls={ range( minLevel, maxLevel ).map( ( index ) =>
-					this.createLevelControl( index, selectedLevel, onChange )
+			<Fragment>
+				{ 'undefined' === typeof ToolbarGroup ? (
+					<Toolbar
+						controls={ range( minLevel, maxLevel ).map( ( index ) =>
+							this.createLevelControl(
+								index,
+								selectedLevel,
+								onChange
+							)
+						) }
+					/>
+				) : (
+					<ToolbarGroup
+						isCollapsed={ isCollapsed }
+						icon={ <HeadingLevelIcon level={ selectedLevel } /> }
+						label={ __( 'Change heading level' ) }
+						controls={ range( minLevel, maxLevel ).map( ( index ) =>
+							this.createLevelControl(
+								index,
+								selectedLevel,
+								onChange
+							)
+						) }
+					/>
 				) }
-			/>
+			</Fragment>
 		);
 	}
 }
