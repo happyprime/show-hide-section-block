@@ -28,7 +28,7 @@
 	border-radius: 0;
 	display: block;
 	margin:cc  0;
-	padding: .5em 0;
+	padding: .5em 1.5em .5em 0;
 	position: relative;
 	text-align: left;
 	transition: border .15s ease;
