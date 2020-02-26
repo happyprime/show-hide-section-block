@@ -31,7 +31,6 @@
 	padding: .5em 1.5em .5em 0;
 	position: relative;
 	text-align: left;
-	transition: border .15s ease;
 	width: 100%;
 }
 
@@ -54,7 +53,7 @@
 	display: inline-block;
 	height: 1em;
 	position: absolute;
-	right: 0;
+	right: .25em;
 	top: calc(50% - .5em);
 	width: 1em;
 	transition: transform .3s ease;
