@@ -4,11 +4,11 @@
 
 import { range } from 'lodash';
 
-const { __, sprintf } = wp.i18n;
+import { __, sprintf } from '@wordpress/i18n';
 
-const { Component, Fragment } = wp.element;
+import { Component, Fragment } from '@wordpress/element';
 
-const { Path, SVG, Toolbar, ToolbarGroup } = wp.components;
+import { Path, SVG, Toolbar, ToolbarGroup } from '@wordpress/components';
 
 function HeadingLevelIcon( { level, isPressed = false } ) {
 	const levelToPath = {
