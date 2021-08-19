@@ -31,7 +31,7 @@ function register_block() {
 		return;
 	}
 
-	$asset_data = require dirname( __DIR__ ) . '/build/index.asset.php';
+	$asset_data = require dirname( __DIR__ ) . '/build/js/index.asset.php';
 
 	wp_register_script(
 		'happyprime-show-hide-section',
@@ -67,7 +67,7 @@ function enqueue_block_assets() {
 		return;
 	}
 
-	$asset_data = require dirname( __DIR__ ) . '/build/front-end.asset.php';
+	$asset_data = require dirname( __DIR__ ) . '/build/js/front-end.asset.php';
 
 	wp_enqueue_script(
 		'happyprime-show-hide-section-front-end',
