@@ -11,17 +11,6 @@ add_action( 'init', __NAMESPACE__ . '\register_block', 10 );
 add_action( 'enqueue_block_assets', __NAMESPACE__ . '\enqueue_block_assets', 10 );
 
 /**
- * Provides a block version number for scripts.
- *
- * @since 1.0.0
- *
- * @return string The version number.
- */
-function block_version() {
-	return '1.0.0';
-}
-
-/**
  * Registers the Show/Hide Section block.
  *
  * @since 1.0.0
