@@ -35,17 +35,19 @@ function register_block() {
 
 	wp_register_script(
 		'happyprime-show-hide-section',
-		plugins_url( 'build/index.js', dirname( __FILE__ ) ),
+		plugins_url( 'build/js/index.js', __DIR__ ),
 		$asset_data['dependencies'],
 		$asset_data['version'],
 		true
 	);
 
+	$asset_data = require dirname( __DIR__ ) . '/build/css/style.css.php';
+
 	wp_register_style(
 		'happyprime-show-hide-section',
-		plugins_url( 'style.css', __FILE__ ),
+		plugins_url( 'build/css/style.css', __DIR__ ),
 		array(),
-		block_version()
+		$asset_data['version']
 	);
 
 	register_block_type(
@@ -71,7 +73,7 @@ function enqueue_block_assets() {
 
 	wp_enqueue_script(
 		'happyprime-show-hide-section-front-end',
-		plugins_url( 'build/front-end.js', dirname( __FILE__ ) ),
+		plugins_url( 'build/js/front-end.js', __DIR__ ),
 		$asset_data['dependencies'],
 		$asset_data['version'],
 		true
