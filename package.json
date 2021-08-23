@@ -5,14 +5,24 @@
   "author": "Happy Prime",
   "license": "GPL-2.0-or-later",
   "devDependencies": {
-    "@wordpress/scripts": "^7.1.0"
+    "@wordpress/scripts": "^17.1.0",
+    "@wordpress/stylelint-config": "^19.1.0",
+    "autoprefixer": "^10.3.1",
+    "postcss": "^8.3.6",
+    "postcss-cli": "^8.3.1",
+    "postcss-custom-media": "^8.0.0",
+    "postcss-generate-asset-php": "^0.0.1",
+    "postcss-import": "^14.0.2",
+    "precss": "^4.0.0",
+    "stylelint": "^13.13.1"
   },
   "scripts": {
     "start": "wp-scripts start",
-    "build": "wp-scripts build src/index.js src/front-end.js --output-path=build/",
+    "build": "npm run build:js & npm run build:css",
+	"build:js": "wp-scripts build src/index.js src/front-end.js --output-path=build/js/",
     "lint:js": "wp-scripts lint-js ./src",
     "fix:js": "wp-scripts lint-js ./src --fix",
-    "lint:css": "wp-scripts lint-style './src/style.css'",
-    "fix:css": "wp-scripts lint-style './src/style.css' --fix"
+	"build:css": "postcss -o build/css/style.css src/style.css",
+    "lint:css": "stylelint ./src/style.css"
   }
 }

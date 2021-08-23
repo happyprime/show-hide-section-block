@@ -4,14 +4,13 @@
 
 import HeadingToolbar from './heading-toolbar';
 
-const { __ } = wp.i18n;
+import { __ } from '@wordpress/i18n';
 
-const { registerBlockType } = wp.blocks;
+import { registerBlockType } from '@wordpress/blocks';
 
-const { Fragment } = wp.element;
+import { Fragment } from '@wordpress/element';
 
-const { BlockControls, InnerBlocks, RichText } =
-	'undefined' === typeof wp.blockEditor ? wp.editor : wp.blockEditor;
+import { BlockControls, InnerBlocks, RichText } from '@wordpress/block-editor';
 
 const headingTag = ( level ) => {
 	return `h${ level }`;

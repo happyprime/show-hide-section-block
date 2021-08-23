@@ -11,17 +11,6 @@ add_action( 'init', __NAMESPACE__ . '\register_block', 10 );
 add_action( 'enqueue_block_assets', __NAMESPACE__ . '\enqueue_block_assets', 10 );
 
 /**
- * Provides a block version number for scripts.
- *
- * @since 1.0.0
- *
- * @return string The version number.
- */
-function block_version() {
-	return '1.0.0';
-}
-
-/**
  * Registers the Show/Hide Section block.
  *
  * @since 1.0.0
@@ -31,19 +20,23 @@ function register_block() {
 		return;
 	}
 
+	$asset_data = require dirname( __DIR__ ) . '/build/js/index.asset.php';
+
 	wp_register_script(
 		'happyprime-show-hide-section',
-		plugins_url( 'build/index.js', dirname( __FILE__ ) ),
-		array( 'wp-blocks', 'wp-element' ),
-		block_version(),
+		plugins_url( 'build/js/index.js', __DIR__ ),
+		$asset_data['dependencies'],
+		$asset_data['version'],
 		true
 	);
 
+	$asset_data = require dirname( __DIR__ ) . '/build/css/style.css.php';
+
 	wp_register_style(
 		'happyprime-show-hide-section',
-		plugins_url( 'style.css', __FILE__ ),
+		plugins_url( 'build/css/style.css', __DIR__ ),
 		array(),
-		block_version()
+		$asset_data['version']
 	);
 
 	register_block_type(
@@ -65,11 +58,13 @@ function enqueue_block_assets() {
 		return;
 	}
 
+	$asset_data = require dirname( __DIR__ ) . '/build/js/front-end.asset.php';
+
 	wp_enqueue_script(
 		'happyprime-show-hide-section-front-end',
-		plugins_url( 'build/front-end.js', dirname( __FILE__ ) ),
-		array(),
-		block_version(),
+		plugins_url( 'build/js/front-end.js', __DIR__ ),
+		$asset_data['dependencies'],
+		$asset_data['version'],
 		true
 	);
 }
