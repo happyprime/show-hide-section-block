@@ -7,7 +7,7 @@
 
 /**
  * Plugin Name: Show/Hide Section
- * Plugin URI: https://github.com/happyprime/scrolling-section
+ * Plugin URI: https://github.com/happyprime/show-hide-section
  * Description: Add an interactive heading that enables users to reveal or hide its associated content.
  * Author: Happy Prime
  * Author URI: https://happyprime.co/
