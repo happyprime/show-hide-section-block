@@ -2,7 +2,7 @@
  * Registers a show/hide block for the block editor.
  */
 
-import HeadingToolbar from './heading-toolbar';
+import HeadingLevelDropdown from './heading-level-dropdown';
 
 import { __ } from '@wordpress/i18n';
 
@@ -29,19 +29,17 @@ registerBlockType( metadata, {
 
 		return (
 			<Fragment>
-				<BlockControls>
-					<HeadingToolbar
-						minLevel={ 2 }
-						maxLevel={ 6 }
+				<BlockControls group="block">
+					<HeadingLevelDropdown
 						selectedLevel={ headingLevel }
-						onChange={ ( value ) =>
-							setAttributes( { headingLevel: value } )
+						onChange={ ( newLevel ) =>
+							setAttributes( { headingLevel: newLevel } )
 						}
 					/>
 				</BlockControls>
 				<RichText
 					className="show-hide-toggle"
-					allowedFOrmats={ [ 'bold', 'italic' ] }
+					allowedFormats={ [ 'bold', 'italic' ] }
 					keepPlaceholderOnFocus
 					onChange={ ( value ) =>
 						setAttributes( { heading: value } )
