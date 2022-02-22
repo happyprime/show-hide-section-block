@@ -8,9 +8,12 @@ import { __ } from '@wordpress/i18n';
 
 import { registerBlockType } from '@wordpress/blocks';
 
-import { Fragment } from '@wordpress/element';
-
-import { BlockControls, InnerBlocks, RichText } from '@wordpress/block-editor';
+import {
+	useBlockProps,
+	BlockControls,
+	InnerBlocks,
+	RichText
+} from '@wordpress/block-editor';
 
 import metadata from '../block.json';
 
@@ -21,14 +24,11 @@ const headingTag = ( level ) => {
 // Register the block.
 registerBlockType( metadata, {
 
-	edit: ( props ) => {
-		const {
-			attributes: { heading, headingLevel },
-			setAttributes,
-		} = props;
+	edit: ( { attributes, setAttributes } ) => {
+		const { heading, headingLevel } = attributes;
 
 		return (
-			<Fragment>
+			<div { ...useBlockProps() }>
 				<BlockControls group="block">
 					<HeadingLevelDropdown
 						selectedLevel={ headingLevel }
@@ -51,7 +51,7 @@ registerBlockType( metadata, {
 				<div className="show-hide-panel">
 					<InnerBlocks />
 				</div>
-			</Fragment>
+			</div>
 		);
 	},
 
@@ -59,7 +59,7 @@ registerBlockType( metadata, {
 		const { heading, headingLevel } = attributes;
 
 		return (
-			<Fragment>
+			<>
 				<RichText.Content
 					className="show-hide-toggle"
 					tagName={ headingTag( headingLevel ) }
@@ -68,7 +68,7 @@ registerBlockType( metadata, {
 				<div className="show-hide-panel">
 					<InnerBlocks.Content />
 				</div>
-			</Fragment>
+			</>
 		);
 	},
 } );

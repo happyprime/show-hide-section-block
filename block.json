@@ -26,6 +26,6 @@
 		"customClassName": false
 	},
 	"editorScript": "file:./build/js/index.js",
-	"script": "show-hide-section",
+	"viewScript": "show-hide-section",
 	"style": "file:./build/css/style.css"
 }
