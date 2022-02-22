@@ -12,41 +12,38 @@ import {
 	useBlockProps,
 	BlockControls,
 	InnerBlocks,
-	RichText
+	RichText,
 } from '@wordpress/block-editor';
 
 import metadata from '../block.json';
 
-const headingTag = ( level ) => {
-	return `h${ level }`;
+const headingTag = (level) => {
+	return `h${level}`;
 };
 
 // Register the block.
-registerBlockType( metadata, {
-
-	edit: ( { attributes, setAttributes } ) => {
+registerBlockType(metadata, {
+	edit: ({ attributes, setAttributes }) => {
 		const { heading, headingLevel } = attributes;
 
 		return (
-			<div { ...useBlockProps() }>
+			<div {...useBlockProps()}>
 				<BlockControls group="block">
 					<HeadingLevelDropdown
-						selectedLevel={ headingLevel }
-						onChange={ ( newLevel ) =>
-							setAttributes( { headingLevel: newLevel } )
+						selectedLevel={headingLevel}
+						onChange={(newLevel) =>
+							setAttributes({ headingLevel: newLevel })
 						}
 					/>
 				</BlockControls>
 				<RichText
 					className="show-hide-toggle"
-					allowedFormats={ [ 'core/bold', 'core/italic' ] }
+					allowedFormats={['core/bold', 'core/italic']}
 					keepPlaceholderOnFocus
-					onChange={ ( value ) =>
-						setAttributes( { heading: value } )
-					}
-					placeholder={ __( 'Show/Hide Section heading…' ) }
-					tagName={ headingTag( headingLevel ) }
-					value={ heading }
+					onChange={(value) => setAttributes({ heading: value })}
+					placeholder={__('Show/Hide Section heading…')}
+					tagName={headingTag(headingLevel)}
+					value={heading}
 				/>
 				<div className="show-hide-panel">
 					<InnerBlocks />
@@ -55,15 +52,15 @@ registerBlockType( metadata, {
 		);
 	},
 
-	save: ( { attributes } ) => {
+	save: ({ attributes }) => {
 		const { heading, headingLevel } = attributes;
 
 		return (
 			<>
 				<RichText.Content
 					className="show-hide-toggle"
-					tagName={ headingTag( headingLevel ) }
-					value={ heading }
+					tagName={headingTag(headingLevel)}
+					value={heading}
 				/>
 				<div className="show-hide-panel">
 					<InnerBlocks.Content />
@@ -71,4 +68,4 @@ registerBlockType( metadata, {
 			</>
 		);
 	},
-} );
+});
