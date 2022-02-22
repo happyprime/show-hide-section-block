@@ -1,4 +1,4 @@
-# Show/Hide Section block
+# Show/Hide Section Block
 
 An interactive heading that enables users to reveal or hide its associated content.
 
