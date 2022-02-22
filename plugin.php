@@ -1,11 +1,5 @@
 <?php
 /**
- * The main plugin file.
- *
- * @package show-hide-section
- */
-
-/**
  * Plugin Name: Show/Hide Section
  * Plugin URI: https://github.com/happyprime/show-hide-section
  * Description: Add an interactive heading that enables users to reveal or hide its associated content.
