@@ -8,7 +8,7 @@
 namespace HappyPrime\Show_Hide_Section\Block;
 
 add_action( 'init', __NAMESPACE__ . '\register_block', 10 );
-add_action( 'enqueue_block_assets', __NAMESPACE__ . '\enqueue_block_assets', 10 );
+add_action( 'wp_enqueue_scripts', __NAMESPACE__ . '\register_script' );
 
 /**
  * Registers the Show/Hide Section block.
@@ -16,53 +16,20 @@ add_action( 'enqueue_block_assets', __NAMESPACE__ . '\enqueue_block_assets', 10 
  * @since 1.0.0
  */
 function register_block() {
-	if ( ! function_exists( 'register_block_type' ) ) {
-		return;
-	}
-
-	$asset_data = require dirname( __DIR__ ) . '/build/js/index.asset.php';
-
-	wp_register_script(
-		'happyprime-show-hide-section',
-		plugins_url( 'build/js/index.js', __DIR__ ),
-		$asset_data['dependencies'],
-		$asset_data['version'],
-		true
-	);
-
-	$asset_data = require dirname( __DIR__ ) . '/build/css/style.css.php';
-
-	wp_register_style(
-		'happyprime-show-hide-section',
-		plugins_url( 'build/css/style.css', __DIR__ ),
-		array(),
-		$asset_data['version']
-	);
-
-	register_block_type(
-		'happyprime/show-hide-section',
-		array(
-			'editor_script' => 'happyprime-show-hide-section',
-			'style'         => 'happyprime-show-hide-section',
-		)
+	register_block_type_from_metadata(
+		dirname( __DIR__ )
 	);
 }
 
 /**
- * Enqueues front-end assets for the Show/Hide Section block if appropriate.
- *
- * @since 1.0.0
+ * Register the front-end script so that it is enqueued in the footer.
  */
-function enqueue_block_assets() {
-	if ( is_admin() || ! has_block( 'happyprime/show-hide-section' ) ) {
-		return;
-	}
+function register_script() {
+	$asset_data = require_once dirname( __DIR__ ) . '/build/js/front-end.asset.php';
 
-	$asset_data = require dirname( __DIR__ ) . '/build/js/front-end.asset.php';
-
-	wp_enqueue_script(
-		'happyprime-show-hide-section-front-end',
-		plugins_url( 'build/js/front-end.js', __DIR__ ),
+	wp_register_script(
+		'show-hide-section',
+		plugin_dir_url( __DIR__ ) . '/build/js/front-end.js',
 		$asset_data['dependencies'],
 		$asset_data['version'],
 		true
