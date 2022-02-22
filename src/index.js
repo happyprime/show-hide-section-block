@@ -12,41 +12,14 @@ import { Fragment } from '@wordpress/element';
 
 import { BlockControls, InnerBlocks, RichText } from '@wordpress/block-editor';
 
+import metadata from '../block.json';
+
 const headingTag = ( level ) => {
 	return `h${ level }`;
 };
 
 // Register the block.
-registerBlockType( 'happyprime/show-hide-section', {
-	title: __( 'Show/Hide Section' ),
-
-	description: __(
-		'Add an interactive heading that enables users to reveal or hide its associated content.'
-	),
-
-	icon: 'hidden',
-
-	category: 'widgets',
-
-	keywords: [ __( 'accordion' ), __( 'faq' ) ],
-
-	attributes: {
-		heading: {
-			type: 'string',
-			default: '',
-			source: 'html',
-			selector: '.show-hide-toggle',
-		},
-		headingLevel: {
-			type: 'number',
-			default: 3,
-		},
-	},
-
-	supports: {
-		className: false,
-		customClassName: false,
-	},
+registerBlockType( metadata, {
 
 	edit: ( props ) => {
 		const {
