@@ -39,7 +39,7 @@ registerBlockType( metadata, {
 				</BlockControls>
 				<RichText
 					className="show-hide-toggle"
-					allowedFormats={ [ 'bold', 'italic' ] }
+					allowedFormats={ [ 'core/bold', 'core/italic' ] }
 					keepPlaceholderOnFocus
 					onChange={ ( value ) =>
 						setAttributes( { heading: value } )
