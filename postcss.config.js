@@ -7,7 +7,6 @@ module.exports = {
 		},
 		'precss': {},
 		'autoprefixer': {},
-		'postcss-custom-media': {},
 		'postcss-generate-asset-php': {},
 	}
 };

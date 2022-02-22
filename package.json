@@ -10,7 +10,6 @@
     "autoprefixer": "^10.4.2",
     "postcss": "^8.4.6",
     "postcss-cli": "^9.1.0",
-    "postcss-custom-media": "^8.0.0",
     "postcss-generate-asset-php": "^0.0.1",
     "postcss-import": "^14.0.2",
     "precss": "^4.0.0",
