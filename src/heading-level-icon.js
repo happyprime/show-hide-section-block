@@ -1,4 +1,7 @@
 /**
+ * This file was copied from the Gutenberg project
+ * @see https://github.com/WordPress/gutenberg/blob/8c3ca76906ddb61f1e7639442815e70fa068cc85/packages/block-library/src/heading/heading-level-icon.js
+ *
  * WordPress dependencies
  */
 import { Path, SVG } from '@wordpress/components';
