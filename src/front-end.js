@@ -14,29 +14,29 @@ const showHide = () => {
 	const length = toggles.length;
 
 	/**
-	 * Toggles the `aria-expanded` and innerText of the master toggle button.
+	 * Toggle the `aria-expanded` and innerText of the Toggle All button.
 	 *
-	 * @param {Object}  masterToggle The master toggle button.
-	 * @param {boolean} expanded     Whether the show/hide sections are expanded.
+	 * @param {Object}  toggler  The button that toggles all sections.
+	 * @param {boolean} expanded Whether the show/hide sections are expanded.
 	 */
-	function toggleMaster(masterToggle, expanded) {
+	function toggleAll(toggler, expanded) {
 		if (expanded) {
-			masterToggle.setAttribute('aria-expanded', 'false');
-			masterToggle.innerText = 'Open All';
+			toggler.setAttribute('aria-expanded', 'false');
+			toggler.innerText = 'Open All';
 		} else {
-			masterToggle.setAttribute('aria-expanded', 'true');
-			masterToggle.innerText = 'Close All';
+			toggler.setAttribute('aria-expanded', 'true');
+			toggler.innerText = 'Close All';
 		}
 	}
 
 	/**
-	 * Calls `toggleMaster()` if there is a master toggle button.
+	 * Call `toggleAll()` if there is a Toggle All button.
 	 */
-	function maybeToggleMaster() {
-		const masterToggle = document.querySelector('.show-hide-toggle_master');
+	function maybetoggleAll() {
+		const toggler = document.querySelector('.show-hide-all-toggler');
 
-		// Return early if there is no master toggle button.
-		if (!masterToggle) {
+		// Return early if there is no Toggle All button.
+		if (!toggler) {
 			return;
 		}
 
@@ -46,11 +46,11 @@ const showHide = () => {
 				'true' === toggle.firstChild.getAttribute('aria-expanded')
 		);
 
-		toggleMaster(masterToggle.firstChild, expanded);
+		toggleAll(toggler.firstChild, expanded);
 	}
 
 	/**
-	 * Toggles the `aria-expanded` state on the toggle button,
+	 * Toggle the `aria-expanded` state on the toggle button,
 	 * and the display of the the toggle section.
 	 *
 	 * @param {Object}  toggle   The show/hide section toggle button.
@@ -111,7 +111,7 @@ const showHide = () => {
 			const expanded = toggle.getAttribute('aria-expanded') === 'true';
 
 			toggleSection(toggle, expanded);
-			maybeToggleMaster();
+			maybetoggleAll();
 		});
 
 		// Bind keyboard behaviors on the toggle button.
@@ -149,42 +149,39 @@ const showHide = () => {
 		});
 	});
 
-	// Adds a master toggle button if there are more than one show/hide sections.
+	// Add a Toggle All button if there are more than one show/hide sections.
 	if (1 < length) {
 		// Get the first toggle section
 		const firstToggle = toggles[0];
 
 		// Set up a button wrapped in the same `h{n}` tag as the first toggle section.
-		const masterToggleHeading = document.createElement(
-			firstToggle.localName
-		);
-		const masterToggle = document.createElement('button');
+		const togglerHeading = document.createElement(firstToggle.localName);
+		const toggler = document.createElement('button');
 		const toggleSectionIds = Array.from(toggles.keys())
 			.map((index) => `show-hide-section-${index}`)
 			.join(' ');
 
-		masterToggleHeading.className = 'show-hide-toggle_master';
-		masterToggle.setAttribute('aria-expanded', 'false');
-		masterToggle.setAttribute('aria-controls', toggleSectionIds);
-		masterToggle.appendChild(document.createTextNode('Open All'));
-		masterToggleHeading.appendChild(masterToggle);
+		togglerHeading.className = 'show-hide-all-toggler';
+		toggler.setAttribute('aria-expanded', 'false');
+		toggler.setAttribute('aria-controls', toggleSectionIds);
+		toggler.appendChild(document.createTextNode('Open All'));
+		togglerHeading.appendChild(toggler);
 
-		// Insert the master toggle button before the first toggle section.
-		firstToggle.parentNode.insertBefore(masterToggleHeading, firstToggle);
+		// Insert the Toggle All button before the first toggle section.
+		firstToggle.parentNode.insertBefore(togglerHeading, firstToggle);
 
-		// Bind click behaviors on the master toggle button.
-		masterToggle.addEventListener('click', (event) => {
+		// Bind click behaviors on the Toggle All button.
+		toggler.addEventListener('click', (event) => {
 			// Just for good measure - the button shouldn't do anything by default.
 			event.preventDefault();
 
-			const expanded =
-				masterToggle.getAttribute('aria-expanded') === 'true';
+			const expanded = toggler.getAttribute('aria-expanded') === 'true';
 
 			toggles.forEach((toggle) =>
 				toggleSection(toggle.firstChild, expanded)
 			);
 
-			toggleMaster(masterToggle, expanded);
+			toggleAll(toggler, expanded);
 		});
 	}
 };
