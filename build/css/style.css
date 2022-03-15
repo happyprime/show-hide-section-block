@@ -1,4 +1,4 @@
-.show-hide-toggle_master button,
+.show-hide-all-toggler button,
 .show-hide-toggle button {
 	background: none;
 	border: none;
@@ -11,7 +11,7 @@
 	text-transform: none;
 }
 
-.show-hide-toggle_master button {
+.show-hide-all-toggler button {
 	font-size: 0.75em;
 	padding-right: 1.5em;
 	position: relative;
@@ -47,8 +47,11 @@
 }
 
 .show-hide-toggle button::after,
-.show-hide-toggle_master button::after {
+.show-hide-all-toggler button::after {
+	/* stylelint-disable function-url-quotes */
 	background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 10 10"><path fill="none" d="M0 0h10v10H0z"/><path fill="rgba(0,0,0,.67)" d="M10 4.69H5.31V0h-.62v4.69H0v.62h4.69V10h.62V5.31H10v-.62z"/></svg>');
+
+	/* stylelint-enable function-url-quotes */
 	content: "";
 	display: inline-block;
 	height: 1em;
@@ -60,7 +63,7 @@
 }
 
 .show-hide-toggle button[aria-expanded="true"]::after,
-.show-hide-toggle_master button[aria-expanded="true"]::after {
+.show-hide-all-toggler button[aria-expanded="true"]::after {
 	transform: rotate(-135deg);
 }
 
