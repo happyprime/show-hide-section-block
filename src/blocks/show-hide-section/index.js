@@ -1,6 +1,5 @@
 import { registerBlockType } from '@wordpress/blocks';
 import { InnerBlocks, RichText, useBlockProps } from '@wordpress/block-editor';
-import { select, subscribe } from '@wordpress/data';
 import { __ } from '@wordpress/i18n';
 
 // Internal dependencies.
@@ -11,13 +10,9 @@ registerBlockType(metadata, {
 	edit: (props) => {
 		const blockProps = useBlockProps(); // eslint-disable-line react-hooks/rules-of-hooks
 		const {
-			attributes: { htmlId, summary },
+			attributes: { summary },
 			setAttributes,
 		} = props;
-
-		// Create an ID for this section based on its order within the parent Show/Hide Group block.
-		const allChildren = select('core/block-editor').getBlocks(props.clientId);
-		console.log('allChildren',allChildren);
 
 		return (
 			<details {...blockProps}>
@@ -39,10 +34,10 @@ registerBlockType(metadata, {
 	save: (props) => {
 		const blockProps = useBlockProps.save();
 		const {
-			attributes: { summary },
+			attributes: { htmlId, summary },
 		} = props;
 		return (
-			<details {...blockProps} id={props.clientId}>
+			<details {...blockProps} id={htmlId}>
 				<summary>{summary}</summary>
 				<InnerBlocks.Content />
 			</details>

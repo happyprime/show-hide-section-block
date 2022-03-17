@@ -1,23 +1,38 @@
 import { registerBlockType } from '@wordpress/blocks';
 import { InnerBlocks, useBlockProps } from '@wordpress/block-editor';
-import { useSelect } from '@wordpress/data';
+import { dispatch, withSelect } from '@wordpress/data';
 
 // Internal dependencies.
 import metadata from './block.json';
 
 // Register the block.
 registerBlockType(metadata, {
-	edit: (props) => {
+	edit: withSelect((select, props) => {
+		return {
+			innerBlocks: select('core/block-editor').getBlocks(props.clientId),
+		};
+	})((props) => {
 		const blockProps = useBlockProps(); // eslint-disable-line react-hooks/rules-of-hooks
-		const { setAttributes } = props;
-		// eslint-disable-next-line react-hooks/rules-of-hooks
-		const { blockCount } = useSelect((select) => ({
-			blockCount: select('core/block-editor').getBlockCount(
-				props.clientId
-			),
-		}));
-		setAttributes({ blockCount });
-		console.log("Group's props", props);
+		const { innerBlocks, setAttributes } = props;
+
+		// Update inner blocks' htmlId attributes when the inner blocks change.
+		let newId = '';
+		let currentIds = '';
+		for (let i = 0; i < innerBlocks.length; i++) {
+			newId = 'show-hide-section-' + i;
+			currentIds += ' ' + newId;
+			dispatch('core/block-editor').updateBlockAttributes(
+				innerBlocks[i].clientId,
+				{ htmlId: newId }
+			);
+		}
+
+		// Save the number of inner blocks.
+		const currentCount = props.innerBlocks.length;
+		// TODO: fix the problem setting both atts at once
+		setAttributes({ blockCount: currentCount });
+		setAttributes({ allIds: currentIds });
+
 		return (
 			<div {...blockProps}>
 				<InnerBlocks
@@ -25,12 +40,12 @@ registerBlockType(metadata, {
 					template={[
 						[
 							'happyprime/show-hide-section',
-							{},
+							{ htmlId: 'show-hide-section-0' },
 							[['core/paragraph', {}]],
 						],
 						[
 							'happyprime/show-hide-section',
-							{},
+							{ htmlId: 'show-hide-section-1' },
 							[['core/paragraph', {}]],
 						],
 					]}
@@ -38,16 +53,16 @@ registerBlockType(metadata, {
 				/>
 			</div>
 		);
-	},
+	}),
 	save: (props) => {
 		const blockProps = useBlockProps.save();
 		// eslint-disable-next-line react-hooks/rules-of-hooks
-		const { blockCount } = props.attributes;
+		const { blockCount, allIds } = props.attributes;
 		const toggleAll = (
 			<button
 				className="toggle-all"
 				aria-expanded="false"
-				aria-controls=""
+				aria-controls={allIds}
 			>
 				Open All
 			</button>
