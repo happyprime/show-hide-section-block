@@ -1,56 +1,34 @@
-.show-hide-all-toggler button,
-.show-hide-toggle button {
+.wp-block-happyprime-show-hide-group details {
+	border-bottom: 1px solid;
+	padding: 1em 0;
+}
+
+.wp-block-happyprime-show-hide-group details[open] {
+	padding-bottom: 0;
+}
+
+.wp-block-happyprime-show-hide-group details:nth-child(2) {
+	border-top: 1px solid;
+}
+
+.wp-block-happyprime-show-hide-group .toggle-all {
+	cursor: pointer;
+	font-size: 0.75em;
+	position: relative;
+	text-transform: uppercase;
 	background: none;
 	border: none;
 	color: inherit;
-	font: inherit;
 	line-height: inherit;
-	margin: 0;
+	margin: 1em 0;
 	overflow: visible;
-	padding: 0;
-	text-transform: none;
+	padding: 0 1.5em 0 0;
 }
 
-.show-hide-all-toggler button {
-	font-size: 0.75em;
-	padding-right: 1.5em;
-	position: relative;
-	text-transform: uppercase;
-}
-
-.show-hide-toggle {
-	margin: 0;
-}
-
-.show-hide-toggle button {
-	border: 1px solid;
-	border-width: 1px 0;
-	border-radius: 0;
-	display: block;
-	margin: 0;
-	padding: 0.5em 1.5em 0.5em 0;
-	position: relative;
-	text-align: left;
-	width: 100%;
-}
-
-.show-hide-toggle button:hover {
-	border-color: inherit;
-}
-
-.show-hide-toggle button[aria-expanded="true"] {
-	border-bottom: none;
-}
-
-.show-hide-toggle + .show-hide-panel + .show-hide-toggle button {
-	border-top: none;
-}
-
-.show-hide-toggle button::after,
-.show-hide-all-toggler button::after {
+.wp-block-happyprime-show-hide-group .toggle-all::after,
+.wp-block-happyprime-show-hide-group summary::after {
 	/* stylelint-disable function-url-quotes */
 	background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 10 10"><path fill="none" d="M0 0h10v10H0z"/><path fill="rgba(0,0,0,.67)" d="M10 4.69H5.31V0h-.62v4.69H0v.62h4.69V10h.62V5.31H10v-.62z"/></svg>');
-
 	/* stylelint-enable function-url-quotes */
 	content: "";
 	display: inline-block;
@@ -62,13 +40,13 @@
 	transition: transform 0.3s ease;
 }
 
-.show-hide-toggle button[aria-expanded="true"]::after,
-.show-hide-all-toggler button[aria-expanded="true"]::after {
+.wp-block-happyprime-show-hide-group .toggle-all[aria-expanded="true"]::after,
+.wp-block-happyprime-show-hide-group details[open] summary::after {
 	transform: rotate(-135deg);
 }
 
-.show-hide-panel > *:last-child {
-	border-bottom: 1px solid;
-	margin-bottom: 0;
-	padding-bottom: 1em;
+.wp-block-happyprime-show-hide-group summary {
+	position: relative;
+	cursor: pointer;
+	list-style: none;
 }
