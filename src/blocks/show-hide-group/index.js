@@ -32,8 +32,7 @@ registerBlockType(metadata, {
 
 		// Save the number of inner blocks and the list of IDs the Toggle All button controls.
 		const currentCount = innerBlocks.length;
-		setAttributes({ blockCount: currentCount });
-		setAttributes({ allIds: currentIds });
+		setAttributes({ blockCount: currentCount, allIds: currentIds });
 
 		return (
 			<div {...blockProps}>
