@@ -25,5 +25,6 @@
 		"anchor": true,
 		"html": false,
 		"multiple": true
-	}
+	},
+	"editorScript": "file:../../build/show-hide-section.js"
 }

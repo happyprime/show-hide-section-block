@@ -4,6 +4,7 @@ import { dispatch, useSelect } from '@wordpress/data';
 
 // Internal dependencies.
 import metadata from './block.json';
+import './style.css';
 
 // Register the block.
 registerBlockType(metadata, {

@@ -19,6 +19,6 @@
 		"html": false,
 		"multiple": false
 	},
-	"editorScript": "file:../../../build/js/index.js",
-	"style": "file:../../../build/css/style.css"
+	"editorScript": "file:../../build/show-hide-group.js",
+	"style": "file:./style.css"
 }
