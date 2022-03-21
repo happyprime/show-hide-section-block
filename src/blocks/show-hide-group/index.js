@@ -1,19 +1,22 @@
 import { registerBlockType } from '@wordpress/blocks';
 import { InnerBlocks, useBlockProps } from '@wordpress/block-editor';
-import { dispatch, withSelect } from '@wordpress/data';
+import { dispatch, useSelect } from '@wordpress/data';
 
 // Internal dependencies.
 import metadata from './block.json';
 
 // Register the block.
 registerBlockType(metadata, {
-	edit: withSelect((select, props) => {
-		return {
-			innerBlocks: select('core/block-editor').getBlocks(props.clientId),
-		};
-	})((props) => {
+	edit: (props) => {
 		const blockProps = useBlockProps(); // eslint-disable-line react-hooks/rules-of-hooks
-		const { innerBlocks, setAttributes } = props;
+		const { setAttributes } = props;
+		// eslint-disable-next-line react-hooks/rules-of-hooks
+		const innerBlocks = useSelect((select) => {
+			const currentBlocks = select('core/block-editor').getBlocks(
+				props.clientId
+			);
+			return currentBlocks;
+		});
 
 		// Update inner blocks' htmlId attributes when the inner blocks change.
 		let newId = '';
@@ -27,9 +30,8 @@ registerBlockType(metadata, {
 			);
 		}
 
-		// Save the number of inner blocks.
-		const currentCount = props.innerBlocks.length;
-		// TODO: fix the problem setting both atts at once
+		// Save the number of inner blocks and the list of IDs the Toggle All button controls.
+		const currentCount = innerBlocks.length;
 		setAttributes({ blockCount: currentCount });
 		setAttributes({ allIds: currentIds });
 
@@ -53,7 +55,7 @@ registerBlockType(metadata, {
 				/>
 			</div>
 		);
-	}),
+	},
 	save: (props) => {
 		const blockProps = useBlockProps.save();
 		// eslint-disable-next-line react-hooks/rules-of-hooks
@@ -67,6 +69,7 @@ registerBlockType(metadata, {
 				Open All
 			</button>
 		);
+
 		return (
 			<div {...blockProps}>
 				{blockCount > 1 && toggleAll}
