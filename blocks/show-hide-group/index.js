@@ -10,7 +10,10 @@ import './style.css';
 registerBlockType(metadata, {
 	edit: (props) => {
 		const blockProps = useBlockProps(); // eslint-disable-line react-hooks/rules-of-hooks
-		const { setAttributes } = props;
+		const {
+			attributes: { blockCount, allIds },
+			setAttributes,
+		} = props;
 		// eslint-disable-next-line react-hooks/rules-of-hooks
 		const innerBlocks = useSelect((select) => {
 			const currentBlocks = select('core/block-editor').getBlocks(
@@ -35,8 +38,20 @@ registerBlockType(metadata, {
 		const currentCount = innerBlocks.length;
 		setAttributes({ blockCount: currentCount, allIds: currentIds });
 
+		// Create an Open/Close All button which will only be shown if there is more than one inner block.
+		const toggleAll = (
+			<button
+				className="toggle-all"
+				aria-expanded="false"
+				aria-controls={allIds}
+			>
+				Open All
+			</button>
+		);
+
 		return (
 			<div {...blockProps}>
+				{blockCount > 1 && toggleAll}
 				<InnerBlocks
 					allowedBlocks={['happyprime/show-hide-section']}
 					template={[
