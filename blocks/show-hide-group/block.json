@@ -1,0 +1,23 @@
+{
+	"$schema": "https://json.schemastore.org/block.json",
+	"apiVersion": 2,
+	"name": "happyprime/show-hide-group",
+	"title": "Show Hide Group",
+	"textdomain": "happy-prime",
+	"category": "widgets",
+	"description": "Creates accessible summaries that can be toggled to show or hide additional details.",
+	"icon": "hidden",
+	"attributes": {
+		"allIds": {
+			"type": "string"
+		},
+		"blockCount": {
+			"type": "number"
+		}
+	},
+	"supports": {
+		"html": false
+	},
+	"editorScript": "file:../../build/show-hide-group.js",
+	"style": "file:./style.css"
+}

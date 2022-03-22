@@ -1,27 +1,27 @@
 {
   "name": "show-hide-section",
-  "version": "1.0.0",
-  "description": "An interactive heading that enables users to reveal or hide its associated content",
+  "version": "1.1.0",
+  "description": "Creates accessible summaries that can be toggled to show or hide additional details.",
   "author": "Happy Prime",
   "license": "GPL-2.0-or-later",
   "devDependencies": {
-    "@wordpress/scripts": "^22.0.0",
-    "@wordpress/stylelint-config": "^20.0.1",
+    "@wordpress/scripts": "^20.0.2",
+    "@wordpress/stylelint-config": "^20.0.0",
     "autoprefixer": "^10.4.2",
-    "postcss": "^8.4.6",
+    "postcss": "^8.4.5",
     "postcss-cli": "^9.1.0",
     "postcss-generate-asset-php": "^0.0.1",
     "postcss-import": "^14.0.2",
     "precss": "^4.0.0",
-    "stylelint": "^14.5.2"
+    "stylelint": "^14.3.0"
   },
   "scripts": {
-    "start": "wp-scripts start",
-    "build": "npm run build:js && npm run build:css",
-    "build:js": "wp-scripts build src/index.js src/front-end.js --output-path=build/js/",
-    "lint:js": "wp-scripts lint-js ./src",
-    "fix:js": "wp-scripts lint-js ./src --fix",
-    "build:css": "postcss -o build/css/style.css src/style.css",
-    "lint:css": "stylelint ./src/style.css"
+    "build": "wp-scripts build",
+    "check-engines": "wp-scripts check-engines",
+    "check-licenses": "wp-scripts check-licenses --production",
+    "lint:css": "wp-scripts lint-style '**/*.css'",
+    "lint:js": "wp-scripts lint-js 'blocks/**/*.js'",
+    "lint:fix": "wp-scripts lint-js 'blocks/**/*.js' --fix",
+    "lint:pkg-json": "wp-scripts lint-pkg-json ."
   }
 }

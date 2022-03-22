@@ -1,35 +1,41 @@
 <?php
 /**
- * Loads assets for the Show/Hide Section block.
+ * Handle the server-side registration of the blocks.
  *
- * @package show-hide-section
+ * @package happy-prime
  */
 
-namespace HappyPrime\Show_Hide_Section\Block;
+namespace HappyPrime\Block\ShowHideSection;
 
-add_action( 'init', __NAMESPACE__ . '\register_block', 10 );
-add_action( 'wp_enqueue_scripts', __NAMESPACE__ . '\register_script' );
+add_action( 'init', __NAMESPACE__ . '\register' );
+add_action( 'enqueue_block_assets', __NAMESPACE__ . '\hp_show_assets' );
 
 /**
- * Registers the Show/Hide Section block.
- *
- * @since 1.0.0
+ * Register the blocks on the server.
  */
-function register_block() {
+function register() {
 	register_block_type_from_metadata(
-		dirname( __DIR__ )
+		dirname( __DIR__ ) . '/blocks/show-hide-group'
+	);
+
+	register_block_type_from_metadata(
+		dirname( __DIR__ ) . '/blocks/show-hide-section'
 	);
 }
 
 /**
- * Register the front-end script so that it is enqueued in the footer.
+ * Enqueue frontend assets in the document footer.
  */
-function register_script() {
-	$asset_data = require_once dirname( __DIR__ ) . '/build/js/front-end.asset.php';
+function hp_show_assets() {
+	if ( ! has_block( 'happyprime/show-hide-group' ) || is_admin() ) {
+		return;
+	}
 
-	wp_register_script(
-		'show-hide-section',
-		plugin_dir_url( __DIR__ ) . '/build/js/front-end.js',
+	$asset_data = require_once dirname( __DIR__ ) . '/build/front-end.asset.php';
+
+	wp_enqueue_script(
+		'hp-show',
+		plugins_url( '/build/front-end.js', __DIR__ ),
 		$asset_data['dependencies'],
 		$asset_data['version'],
 		true
