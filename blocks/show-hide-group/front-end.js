@@ -11,33 +11,33 @@ function docReady(fn) {
 	}
 }
 
-const details = document.querySelectorAll(
-	'.wp-block-happyprime-show-hide-group details'
-);
-
 docReady(function () {
 	const toggleAll = document.querySelectorAll(
 		'.wp-block-happyprime-show-hide-group .toggle-all'
 	);
-	if (toggleAll.length === 1) {
-		toggleAll[0].addEventListener('click', () => {
-			if ('open all' === toggleAll[0].innerText.toLowerCase()) {
-				// Open all.
-				details.forEach((detail) => {
-					detail.setAttribute('open', true);
-				});
-				// Update button.
-				toggleAll[0].innerText = 'Close All';
-				toggleAll[0].ariaExpanded = true;
-			} else {
-				// Close all.
-				details.forEach((detail) => {
-					detail.removeAttribute('open');
-				});
-				// Update button.
-				toggleAll[0].innerText = 'Open All';
-				toggleAll[0].ariaExpanded = false;
-			}
-		});
+	if (toggleAll.length > 0) {
+		toggleAll.forEach((toggle) =>
+			toggle.addEventListener('click', () => {
+				const details =
+					toggle.parentElement.querySelectorAll('details');
+				if ('open all' === toggle.innerText.toLowerCase()) {
+					// Open all.
+					details.forEach((detail) => {
+						detail.setAttribute('open', true);
+					});
+					// Update button.
+					toggle.innerText = 'Close All';
+					toggle.ariaExpanded = true;
+				} else {
+					// Close all.
+					details.forEach((detail) => {
+						detail.removeAttribute('open');
+					});
+					// Update button.
+					toggle.innerText = 'Open All';
+					toggle.ariaExpanded = false;
+				}
+			})
+		);
 	}
 });
