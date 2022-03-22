@@ -15,6 +15,10 @@
 			"selector": "details",
 			"attribute": "id"
 		},
+		"isOpen": {
+			"type": "boolean",
+			"default": "false"
+		},
 		"summary": {
 			"type": "string",
 			"source": "text",

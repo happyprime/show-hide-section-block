@@ -39,11 +39,46 @@ registerBlockType(metadata, {
 		setAttributes({ blockCount: currentCount, allIds: currentIds });
 
 		// Create an Open/Close All button which will only be shown if there is more than one inner block.
+		// eslint-disable-next-line react-hooks/rules-of-hooks
+		const details = useSelect((select) => {
+			const currentBlocks = select('core/block-editor').getBlocks(
+				props.clientId
+			);
+			return currentBlocks;
+		});
+
+		const toggleAllSections = (evt) => {
+			if ('open all' === evt.target.innerText.toLowerCase()) {
+				// Open all.
+				details.forEach((detail) => {
+					dispatch('core/block-editor').updateBlockAttributes(
+						detail.clientId,
+						{ isOpen: 'open' }
+					);
+				});
+				// Update button.
+				evt.target.innerText = 'Close All';
+				evt.target.ariaExpanded = true;
+			} else {
+				// Close all.
+				details.forEach((detail) => {
+					dispatch('core/block-editor').updateBlockAttributes(
+						detail.clientId,
+						{ isOpen: '' }
+					);
+				});
+				// Update button.
+				evt.target.innerText = 'Open All';
+				evt.target.ariaExpanded = false;
+			}
+		};
+
 		const toggleAll = (
 			<button
 				className="toggle-all"
 				aria-expanded="false"
 				aria-controls={allIds}
+				onClick={toggleAllSections}
 			>
 				Open All
 			</button>

@@ -10,12 +10,12 @@ registerBlockType(metadata, {
 	edit: (props) => {
 		const blockProps = useBlockProps(); // eslint-disable-line react-hooks/rules-of-hooks
 		const {
-			attributes: { summary },
+			attributes: { isOpen, summary },
 			setAttributes,
 		} = props;
 
 		return (
-			<details {...blockProps}>
+			<details {...blockProps} open={isOpen}>
 				<RichText
 					tagName="summary"
 					label={__('Summary', 'happy-prime')}
