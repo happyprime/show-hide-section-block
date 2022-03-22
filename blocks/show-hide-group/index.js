@@ -26,7 +26,7 @@ registerBlockType(metadata, {
 		let newId = '';
 		let currentIds = '';
 		for (let i = 0; i < innerBlocks.length; i++) {
-			newId = 'show-hide-section-' + i;
+			newId = 'show-hide-section-' + i + '-' + props.clientId;
 			currentIds += ' ' + newId;
 			dispatch('core/block-editor').updateBlockAttributes(
 				innerBlocks[i].clientId,
