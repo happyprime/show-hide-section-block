@@ -108,7 +108,6 @@ registerBlockType(metadata, {
 	},
 	save: (props) => {
 		const blockProps = useBlockProps.save();
-		// eslint-disable-next-line react-hooks/rules-of-hooks
 		const { blockCount, allIds } = props.attributes;
 		const toggleAll = (
 			<button
