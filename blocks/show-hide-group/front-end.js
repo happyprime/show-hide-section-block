@@ -18,8 +18,9 @@ docReady(function () {
 	if (toggleAll.length > 0) {
 		toggleAll.forEach((toggle) =>
 			toggle.addEventListener('click', () => {
-				const details =
-					toggle.parentElement.querySelectorAll('details');
+				const details = toggle.parentElement.querySelectorAll(
+					'details.wp-block-happyprime-show-hide-section'
+				);
 				if ('open all' === toggle.innerText.toLowerCase()) {
 					// Open all.
 					details.forEach((detail) => {
