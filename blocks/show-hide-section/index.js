@@ -6,8 +6,8 @@ import { __ } from '@wordpress/i18n';
 import metadata from './block.json';
 
 // Register the block.
-registerBlockType(metadata, {
-	edit: (props) => {
+registerBlockType( metadata, {
+	edit: ( props ) => {
 		const blockProps = useBlockProps(); // eslint-disable-line react-hooks/rules-of-hooks
 		const {
 			attributes: { isOpen, summary },
@@ -15,32 +15,32 @@ registerBlockType(metadata, {
 		} = props;
 
 		return (
-			<details {...blockProps} open={isOpen}>
+			<details { ...blockProps } open={ isOpen }>
 				<RichText
 					tagName="summary"
-					label={__('Summary', 'happy-prime')}
-					hideLabelFromVision={true}
-					placeholder={__('Summary', 'happy-prime')}
-					value={summary}
-					allowedFormats={['core/bold', 'core/italic']}
-					onChange={(value) => {
-						setAttributes({ summary: value });
-					}}
+					label={ __( 'Summary', 'happy-prime' ) }
+					hideLabelFromVision={ true }
+					placeholder={ __( 'Summary', 'happy-prime' ) }
+					value={ summary }
+					allowedFormats={ [ 'core/bold', 'core/italic' ] }
+					onChange={ ( value ) => {
+						setAttributes( { summary: value } );
+					} }
 				/>
 				<InnerBlocks />
 			</details>
 		);
 	},
-	save: (props) => {
+	save: ( props ) => {
 		const blockProps = useBlockProps.save();
 		const {
 			attributes: { htmlId, summary },
 		} = props;
 		return (
-			<details {...blockProps} id={htmlId}>
-				<summary>{summary}</summary>
+			<details { ...blockProps } id={ htmlId }>
+				<summary>{ summary }</summary>
 				<InnerBlocks.Content />
 			</details>
 		);
 	},
-});
+} );
