@@ -1,0 +1,13 @@
+.git
+.github/
+bin/
+node_modules/
+tests/
+vendor/
+.distignore
+.gitignore
+.stylelintrc
+composer.json
+composer.lock
+phpcs.xml.dist
+README.md
