@@ -2,10 +2,10 @@
 /**
  * Handle the server-side registration of the blocks.
  *
- * @package happy-prime
+ * @package show-hide-section
  */
 
-namespace HappyPrime\Block\ShowHideSection;
+namespace HappyPrime\ShowHideSection\Block;
 
 add_action( 'init', __NAMESPACE__ . '\register' );
 add_action( 'enqueue_block_assets', __NAMESPACE__ . '\hp_show_assets' );
