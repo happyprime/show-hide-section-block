@@ -17,7 +17,7 @@
 		},
 		"isOpen": {
 			"type": "boolean",
-			"default": "false"
+			"default": false
 		},
 		"summary": {
 			"type": "string",

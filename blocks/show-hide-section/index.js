@@ -19,7 +19,6 @@ registerBlockType( metadata, {
 				<RichText
 					tagName="summary"
 					label={ __( 'Summary', 'happy-prime' ) }
-					hideLabelFromVision={ true }
 					placeholder={ __( 'Summary', 'happy-prime' ) }
 					value={ summary }
 					allowedFormats={ [ 'core/bold', 'core/italic' ] }
