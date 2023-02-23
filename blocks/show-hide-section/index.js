@@ -33,9 +33,12 @@ const Save = ( props ) => {
 	const {
 		attributes: { summary },
 	} = props;
+
 	return (
 		<details { ...blockProps }>
-			<summary>{ summary }</summary>
+			<summary>
+				<RichText.Content tag={ 'summary' } value={ summary } />
+			</summary>
 			<InnerBlocks.Content />
 		</details>
 	);
