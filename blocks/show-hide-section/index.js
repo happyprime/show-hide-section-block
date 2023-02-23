@@ -11,6 +11,25 @@ const Edit = ( props ) => {
 		setAttributes,
 	} = props;
 
+	/**
+	 * Insert a space at the current position of the cursor and then adjust
+	 * the cursor position, accounting for any selection it has made.
+	 *
+	 * @param {Node} node
+	 */
+	const insertSpace = ( node ) => {
+		const { ownerDocument } = node;
+		const { defaultView } = ownerDocument;
+
+		const sel = defaultView.getSelection();
+		const range = sel.getRangeAt( 0 );
+		const textNode = document.createTextNode( ' ' );
+
+		range.deleteContents();
+		range.insertNode( textNode );
+		range.setStartAfter( textNode );
+	};
+
 	return (
 		<details { ...useBlockProps() } open={ isOpen }>
 			<RichText
@@ -21,6 +40,12 @@ const Edit = ( props ) => {
 				allowedFormats={ [ 'core/bold', 'core/italic' ] }
 				onChange={ ( value ) => {
 					setAttributes( { summary: value } );
+				} }
+				onKeyUp={ ( evt ) => {
+					if ( ' ' === evt.key ) {
+						evt.preventDefault(); // Stop the details element from toggling.
+						insertSpace( evt.target ); // But make sure the space character is added.
+					}
 				} }
 			/>
 			<InnerBlocks />
