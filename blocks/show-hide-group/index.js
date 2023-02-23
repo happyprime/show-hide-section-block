@@ -17,7 +17,6 @@ const Edit = ( props ) => {
 		setAttributes,
 	} = props;
 
-	// Create an Open/Close All button which will only be shown if there is more than one inner block.
 	const details = useSelect( ( select ) => {
 		const currentBlocks = select( 'core/block-editor' ).getBlocks(
 			props.clientId
@@ -27,26 +26,24 @@ const Edit = ( props ) => {
 	} );
 
 	const toggleAllSections = ( evt ) => {
-		if ( 'open all' === evt.target.innerText.toLowerCase() ) {
-			// Open all.
+		if ( false === evt.target.ariaExpanded ) {
 			details.forEach( ( detail ) => {
 				dispatch( 'core/block-editor' ).updateBlockAttributes(
 					detail.clientId,
-					{ isOpen: 'open' }
+					{ isOpen: true }
 				);
 			} );
-			// Update button.
+
 			evt.target.innerText = __( 'Close all', 'show-hide-section' );
 			evt.target.ariaExpanded = true;
 		} else {
-			// Close all.
 			details.forEach( ( detail ) => {
 				dispatch( 'core/block-editor' ).updateBlockAttributes(
 					detail.clientId,
-					{ isOpen: '' }
+					{ isOpen: false }
 				);
 			} );
-			// Update button.
+
 			evt.target.innerText = __( 'Open all', 'show-hide-section' );
 			evt.target.ariaExpanded = false;
 		}
@@ -86,7 +83,7 @@ const Edit = ( props ) => {
 						aria-expanded="false"
 						onClick={ toggleAllSections }
 					>
-						Open All
+						{ __( 'Open all', 'show-hide-section' ) }
 					</button>
 				) }
 				<InnerBlocks
@@ -119,7 +116,7 @@ const Save = ( props ) => {
 		<div { ...useBlockProps.save() }>
 			{ hasToggle && (
 				<button className="toggle-all" aria-expanded="false">
-					Open All
+					{ __( 'Open all', 'show-hide-section' ) }
 				</button>
 			) }
 			<InnerBlocks.Content />
