@@ -16,6 +16,5 @@
 	"supports": {
 		"html": false
 	},
-	"editorScript": "file:../../build/show-hide-group.js",
-	"style": "file:./style.css"
+	"editorScript": "file:../../build/show-hide-group.js"
 }
