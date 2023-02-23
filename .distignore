@@ -9,5 +9,7 @@ vendor/
 .stylelintrc
 composer.json
 composer.lock
-phpcs.xml.dist
+phpcs.xml
+postcss.config.js
 README.md
+webpack.config.js

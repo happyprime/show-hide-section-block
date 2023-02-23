@@ -5,15 +5,16 @@
   "author": "Happy Prime",
   "license": "GPL-2.0-or-later",
   "devDependencies": {
-    "@wordpress/scripts": "^24.2.0",
-    "@wordpress/stylelint-config": "^21.1.0",
-    "autoprefixer": "^10.4.12",
-    "postcss": "^8.4.17",
-    "postcss-cli": "^10.0.0",
-    "postcss-generate-asset-php": "^0.0.1",
-    "postcss-import": "^15.0.0",
-    "precss": "^4.0.0",
-    "stylelint": "^14.13.0"
+    "@wordpress/scripts": "^25.4.0",
+    "@wordpress/stylelint-config": "^21.10.0",
+	"autoprefixer": "^10.4.13",
+	"postcss": "^8.4.21",
+	"postcss-advanced-variables": "^3.0.1",
+	"postcss-cli": "^10.1.0",
+	"postcss-custom-media": "^9.1.2",
+	"postcss-import": "^15.1.0",
+	"postcss-nested": "^6.0.1",
+	"postcss-preset-env": "^8.0.1"
   },
   "scripts": {
     "build": "wp-scripts build",
