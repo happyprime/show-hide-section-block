@@ -1,6 +1,6 @@
 # Show/Hide Section Block
 
-Creates accessible summaries that can be toggled to show or hide additional details.
+Display an accessible show/hide interface with details and summary elements.
 
 ## About
 

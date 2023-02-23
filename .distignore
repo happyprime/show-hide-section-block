@@ -6,10 +6,8 @@ tests/
 vendor/
 .distignore
 .gitignore
-.stylelintrc
 composer.json
 composer.lock
 phpcs.xml
-postcss.config.js
 README.md
 webpack.config.js

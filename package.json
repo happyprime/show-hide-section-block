@@ -1,28 +1,31 @@
 {
   "name": "show-hide-section",
-  "version": "1.1.0",
-  "description": "Creates accessible summaries that can be toggled to show or hide additional details.",
+  "version": "2.0.0",
+  "description": "Display an accessible show/hide interface with details and summary elements.",
   "author": "Happy Prime",
   "license": "GPL-2.0-or-later",
+  "keywords": [
+	  "plugin",
+	  "wordpress"
+  ],
+  "homepage": "https://github.com/happyprime/show-hide-section/",
+  "repository": {
+	  "type": "git",
+	  "url": "git+https://github.com/happyprime/show-hide-section.git"
+  },
+  "bugs": {
+	  "url": "https://github.com/happyprime/show-hide-section/"
+  },
   "devDependencies": {
-    "@wordpress/scripts": "^25.4.0",
-    "@wordpress/stylelint-config": "^21.10.0",
-	"autoprefixer": "^10.4.13",
-	"postcss": "^8.4.21",
-	"postcss-advanced-variables": "^3.0.1",
-	"postcss-cli": "^10.1.0",
-	"postcss-custom-media": "^9.1.2",
-	"postcss-import": "^15.1.0",
-	"postcss-nested": "^6.0.1",
-	"postcss-preset-env": "^8.0.1"
+    "@wordpress/scripts": "^25.4.0"
   },
   "scripts": {
     "build": "wp-scripts build",
+    "start": "wp-scripts start",
     "check-engines": "wp-scripts check-engines",
     "check-licenses": "wp-scripts check-licenses --production",
-    "lint:css": "wp-scripts lint-style '**/*.css'",
-    "lint:js": "wp-scripts lint-js 'blocks/**/*.js'",
-    "lint:fix": "wp-scripts lint-js 'blocks/**/*.js' --fix",
+    "lint:js": "wp-scripts lint-js",
+    "lint:fix": "wp-scripts lint-js --fix",
     "lint:pkg-json": "wp-scripts lint-pkg-json ."
   }
 }

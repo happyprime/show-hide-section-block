@@ -2,11 +2,11 @@
 /**
  * Plugin Name: Show/Hide Section Block
  * Plugin URI: https://github.com/happyprime/show-hide-section
- * Description: Creates accessible summaries that can be toggled to show or hide additional details.
+ * Description: Display an accessible show/hide interface with details and summary elements.
  * Author: Happy Prime
  * Author URI: https://happyprime.co/
- * Version: 1.1.0
- * Requires at least: 5.9
+ * Version: 2.0.0
+ * Requires at least: 6.1
  * Requires PHP: 7.4
  * License: GPL2+
  * License URI: https://www.gnu.org/licenses/gpl-2.0.html
