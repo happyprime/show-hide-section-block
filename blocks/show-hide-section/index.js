@@ -29,13 +29,12 @@ const Edit = ( props ) => {
 };
 
 const Save = ( props ) => {
-	const blockProps = useBlockProps.save();
 	const {
 		attributes: { summary },
 	} = props;
 
 	return (
-		<details { ...blockProps }>
+		<details { ...useBlockProps.save() }>
 			<summary>
 				<RichText.Content tag={ 'summary' } value={ summary } />
 			</summary>
