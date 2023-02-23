@@ -29,7 +29,7 @@
 				} )
 			);
 		}
-	}
+	};
 
 	document.addEventListener( 'DOMContentLoaded', handleToggleButton );
 }
