@@ -9,12 +9,6 @@
 	"icon": "media-document",
 	"parent": [ "happyprime/show-hide-group" ],
 	"attributes": {
-		"htmlId": {
-			"type": "string",
-			"source": "attribute",
-			"selector": "details",
-			"attribute": "id"
-		},
 		"isOpen": {
 			"type": "boolean",
 			"default": false

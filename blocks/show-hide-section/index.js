@@ -31,10 +31,10 @@ const Edit = ( props ) => {
 const Save = ( props ) => {
 	const blockProps = useBlockProps.save();
 	const {
-		attributes: { htmlId, summary },
+		attributes: { summary },
 	} = props;
 	return (
-		<details { ...blockProps } id={ htmlId }>
+		<details { ...blockProps }>
 			<summary>{ summary }</summary>
 			<InnerBlocks.Content />
 		</details>
