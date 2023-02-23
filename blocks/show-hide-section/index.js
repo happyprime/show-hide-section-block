@@ -5,41 +5,71 @@ import { __ } from '@wordpress/i18n';
 // Internal dependencies.
 import metadata from './block.json';
 
+const Edit = ( props ) => {
+	const {
+		attributes: { isOpen, summary },
+		setAttributes,
+	} = props;
+
+	/**
+	 * Insert a space at the current position of the cursor and then adjust
+	 * the cursor position, accounting for any selection it has made.
+	 *
+	 * @param {Node} node
+	 */
+	const insertSpace = ( node ) => {
+		const { ownerDocument } = node;
+		const { defaultView } = ownerDocument;
+
+		const sel = defaultView.getSelection();
+		const range = sel.getRangeAt( 0 );
+		const textNode = document.createTextNode( ' ' );
+
+		range.deleteContents();
+		range.insertNode( textNode );
+		range.setStartAfter( textNode );
+	};
+
+	return (
+		<details { ...useBlockProps() } open={ isOpen }>
+			<RichText
+				tagName="summary"
+				label={ __( 'Summary', 'show-hide-section' ) }
+				placeholder={ __( 'Summary', 'show-hide-section' ) }
+				value={ summary }
+				allowedFormats={ [ 'core/bold', 'core/italic' ] }
+				onChange={ ( value ) => {
+					setAttributes( { summary: value } );
+				} }
+				onKeyUp={ ( evt ) => {
+					if ( ' ' === evt.key ) {
+						evt.preventDefault(); // Stop the details element from toggling.
+						insertSpace( evt.target ); // But make sure the space character is added.
+					}
+				} }
+			/>
+			<InnerBlocks />
+		</details>
+	);
+};
+
+const Save = ( props ) => {
+	const {
+		attributes: { summary },
+	} = props;
+
+	return (
+		<details { ...useBlockProps.save() }>
+			<summary>
+				<RichText.Content tag={ 'summary' } value={ summary } />
+			</summary>
+			<InnerBlocks.Content />
+		</details>
+	);
+};
+
 // Register the block.
 registerBlockType( metadata, {
-	edit: ( props ) => {
-		const blockProps = useBlockProps(); // eslint-disable-line react-hooks/rules-of-hooks
-		const {
-			attributes: { isOpen, summary },
-			setAttributes,
-		} = props;
-
-		return (
-			<details { ...blockProps } open={ isOpen }>
-				<RichText
-					tagName="summary"
-					label={ __( 'Summary', 'happy-prime' ) }
-					placeholder={ __( 'Summary', 'happy-prime' ) }
-					value={ summary }
-					allowedFormats={ [ 'core/bold', 'core/italic' ] }
-					onChange={ ( value ) => {
-						setAttributes( { summary: value } );
-					} }
-				/>
-				<InnerBlocks />
-			</details>
-		);
-	},
-	save: ( props ) => {
-		const blockProps = useBlockProps.save();
-		const {
-			attributes: { htmlId, summary },
-		} = props;
-		return (
-			<details { ...blockProps } id={ htmlId }>
-				<summary>{ summary }</summary>
-				<InnerBlocks.Content />
-			</details>
-		);
-	},
+	edit: Edit,
+	save: Save,
 } );

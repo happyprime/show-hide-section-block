@@ -8,16 +8,13 @@
 	"description": "Creates accessible summaries that can be toggled to show or hide additional details.",
 	"icon": "hidden",
 	"attributes": {
-		"allIds": {
-			"type": "string"
-		},
-		"blockCount": {
-			"type": "number"
+		"hasToggle": {
+			"type": "boolean",
+			"default": false
 		}
 	},
 	"supports": {
 		"html": false
 	},
-	"editorScript": "file:../../build/show-hide-group.js",
-	"style": "file:./style.css"
+	"editorScript": "file:../../build/show-hide-group.js"
 }
