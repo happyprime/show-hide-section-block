@@ -34,7 +34,7 @@ function hp_show_assets() {
 	$asset_data = require_once dirname( __DIR__ ) . '/build/front-end.asset.php';
 
 	wp_enqueue_script(
-		'hp-show',
+		'happyprime-show-hide-group-block',
 		plugins_url( '/build/front-end.js', __DIR__ ),
 		$asset_data['dependencies'],
 		$asset_data['version'],
