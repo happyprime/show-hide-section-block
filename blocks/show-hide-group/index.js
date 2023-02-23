@@ -36,7 +36,7 @@ const Edit = ( props ) => {
 				);
 			} );
 			// Update button.
-			evt.target.innerText = 'Close All';
+			evt.target.innerText = __( 'Close all', 'show-hide-section' );
 			evt.target.ariaExpanded = true;
 		} else {
 			// Close all.
@@ -47,7 +47,7 @@ const Edit = ( props ) => {
 				);
 			} );
 			// Update button.
-			evt.target.innerText = 'Open All';
+			evt.target.innerText = __( 'Open all', 'show-hide-section' );
 			evt.target.ariaExpanded = false;
 		}
 	};
