@@ -1,6 +1,12 @@
 import { registerBlockType } from '@wordpress/blocks';
-import { InnerBlocks, useBlockProps } from '@wordpress/block-editor';
+import {
+	InnerBlocks,
+	InspectorControls,
+	useBlockProps,
+} from '@wordpress/block-editor';
+import { PanelBody, ToggleControl } from '@wordpress/components';
 import { dispatch, useSelect } from '@wordpress/data';
+import { __ } from '@wordpress/i18n';
 
 // Internal dependencies.
 import metadata from './block.json';
@@ -8,38 +14,16 @@ import './style.css';
 
 const Edit = ( props ) => {
 	const {
-		attributes: { blockCount, allIds },
+		attributes: { hasToggle },
 		setAttributes,
 	} = props;
-
-	const innerBlocks = useSelect( ( select ) => {
-		const currentBlocks = select( 'core/block-editor' ).getBlocks(
-			props.clientId
-		);
-		return currentBlocks;
-	} );
-
-	// Update inner blocks' htmlId attributes when the inner blocks change.
-	let newId = '';
-	let currentIds = '';
-	for ( let i = 0; i < innerBlocks.length; i++ ) {
-		newId = 'show-hide-section-' + i + '-' + props.clientId;
-		currentIds += ' ' + newId;
-		dispatch( 'core/block-editor' ).updateBlockAttributes(
-			innerBlocks[ i ].clientId,
-			{ htmlId: newId }
-		);
-	}
-
-	// Save the number of inner blocks and the list of IDs the Toggle All button controls.
-	const currentCount = innerBlocks.length;
-	setAttributes( { blockCount: currentCount, allIds: currentIds } );
 
 	// Create an Open/Close All button which will only be shown if there is more than one inner block.
 	const details = useSelect( ( select ) => {
 		const currentBlocks = select( 'core/block-editor' ).getBlocks(
 			props.clientId
 		);
+
 		return currentBlocks;
 	} );
 
@@ -69,56 +53,76 @@ const Edit = ( props ) => {
 		}
 	};
 
-	const toggleAll = (
-		<button
-			className="toggle-all"
-			aria-expanded="false"
-			aria-controls={ allIds }
-			onClick={ toggleAllSections }
-		>
-			Open All
-		</button>
-	);
-
 	return (
-		<div { ...useBlockProps() }>
-			{ blockCount > 1 && toggleAll }
-			<InnerBlocks
-				allowedBlocks={ [ 'happyprime/show-hide-section' ] }
-				template={ [
-					[
-						'happyprime/show-hide-section',
-						{ htmlId: 'show-hide-section-0' },
-						[ [ 'core/paragraph', {} ] ],
-					],
-					[
-						'happyprime/show-hide-section',
-						{ htmlId: 'show-hide-section-1' },
-						[ [ 'core/paragraph', {} ] ],
-					],
-				] }
-				templateLock={ false }
-			/>
-		</div>
+		<>
+			<InspectorControls>
+				<PanelBody>
+					<ToggleControl
+						label={ __(
+							'Has open/close all toggle',
+							'show-hide-section'
+						) }
+						help={
+							hasToggle
+								? __(
+										'Open/close all toggle will display.',
+										'show-hide-section'
+								  )
+								: __(
+										'Open/close all toggle will not display.',
+										'show-hide-section'
+								  )
+						}
+						checked={ hasToggle }
+						onChange={ ( value ) => {
+							setAttributes( { hasToggle: value } );
+						} }
+					/>
+				</PanelBody>
+			</InspectorControls>
+			<div { ...useBlockProps() }>
+				{ hasToggle && (
+					<button
+						className="toggle-all"
+						aria-expanded="false"
+						onClick={ toggleAllSections }
+					>
+						Open All
+					</button>
+				) }
+				<InnerBlocks
+					allowedBlocks={ [ 'happyprime/show-hide-section' ] }
+					template={ [
+						[
+							'happyprime/show-hide-section',
+							{ htmlId: 'show-hide-section-0' },
+							[ [ 'core/paragraph', {} ] ],
+						],
+						[
+							'happyprime/show-hide-section',
+							{ htmlId: 'show-hide-section-1' },
+							[ [ 'core/paragraph', {} ] ],
+						],
+					] }
+					templateLock={ false }
+				/>
+			</div>
+		</>
 	);
 };
 
 const Save = ( props ) => {
-	const blockProps = useBlockProps.save();
-	const { blockCount, allIds } = props.attributes;
-	const toggleAll = (
-		<button
-			className="toggle-all"
-			aria-expanded="false"
-			aria-controls={ allIds }
-		>
-			Open All
-		</button>
-	);
+	const {
+		attributes: { hasToggle },
+	} = props;
 
 	return (
-		<div { ...blockProps }>
-			{ blockCount > 1 && toggleAll }
+		<div { ...useBlockProps.save() }>
+			{ hasToggle && (
+				<button className="toggle-all" aria-expanded="false">
+					Open All
+				</button>
+			) }
 			<InnerBlocks.Content />
 		</div>
 	);

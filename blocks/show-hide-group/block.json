@@ -8,11 +8,9 @@
 	"description": "Creates accessible summaries that can be toggled to show or hide additional details.",
 	"icon": "hidden",
 	"attributes": {
-		"allIds": {
-			"type": "string"
-		},
-		"blockCount": {
-			"type": "number"
+		"hasToggle": {
+			"type": "boolean",
+			"default": false
 		}
 	},
 	"supports": {
