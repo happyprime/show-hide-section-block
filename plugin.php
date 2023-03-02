@@ -29,4 +29,4 @@ if ( ! defined( 'WPINC' ) ) {
 	die;
 }
 
-require_once __DIR__ . '/includes/block.php';
+require_once __DIR__ . '/blocks/show-hide-group/index.php';
