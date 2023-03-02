@@ -5,7 +5,7 @@
  * @package show-hide-section
  */
 
-namespace HappyPrime\ShowHideSection\Block;
+namespace HappyPrime\Blocks\ShowHideGroup;
 
 add_action( 'init', __NAMESPACE__ . '\register' );
 add_action( 'enqueue_block_assets', __NAMESPACE__ . '\hp_show_assets' );
@@ -16,11 +16,11 @@ add_filter( 'pre_render_block', __NAMESPACE__ . '\maybe_enqueue_script', 10, 2 )
  */
 function register() {
 	register_block_type_from_metadata(
-		dirname( __DIR__ ) . '/blocks/show-hide-group'
+		HP_SHS_PLUGIN_DIR . '/blocks/show-hide-group'
 	);
 
 	register_block_type_from_metadata(
-		dirname( __DIR__ ) . '/blocks/show-hide-section'
+		HP_SHS_PLUGIN_DIR . '/blocks/show-hide-section'
 	);
 }
 
@@ -32,11 +32,11 @@ function hp_show_assets() {
 		return;
 	}
 
-	$asset_data = require_once dirname( __DIR__ ) . '/build/front-end.asset.php';
+	$asset_data = require_once HP_SHS_PLUGIN_DIR . '/build/front-end.asset.php';
 
 	wp_register_script(
 		'happyprime-show-hide-group-block',
-		plugins_url( '/build/front-end.js', __DIR__ ),
+		plugins_url( 'build/front-end.js', HP_SHS_PLUGIN_FILE ),
 		$asset_data['dependencies'],
 		$asset_data['version'],
 		true
