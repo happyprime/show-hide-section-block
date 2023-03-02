@@ -8,7 +8,7 @@
 namespace HappyPrime\Blocks\ShowHideGroup;
 
 add_action( 'init', __NAMESPACE__ . '\register' );
-add_action( 'enqueue_block_assets', __NAMESPACE__ . '\hp_show_assets' );
+add_action( 'enqueue_block_assets', __NAMESPACE__ . '\register_assets' );
 add_filter( 'pre_render_block', __NAMESPACE__ . '\maybe_enqueue_script', 10, 2 );
 
 /**
@@ -25,9 +25,9 @@ function register() {
 }
 
 /**
- * Enqueue frontend assets in the document footer.
+ * Make front-end scripting available for enqueue if the block is in use.
  */
-function hp_show_assets() {
+function register_assets() {
 	if ( ! has_block( 'happyprime/show-hide-group' ) || is_admin() ) {
 		return;
 	}
