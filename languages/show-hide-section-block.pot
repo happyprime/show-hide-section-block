@@ -1,0 +1,68 @@
+# Copyright (C) 2023 Happy Prime
+# This file is distributed under the same license as the Show / Hide Section Block plugin.
+msgid ""
+msgstr ""
+"Project-Id-Version: Show / Hide Section Block 2.0.0\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/show-hide-section\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2023-03-02T00:29:09+00:00\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"X-Generator: WP-CLI 2.6.0\n"
+"X-Domain: show-hide-section\n"
+
+#. Plugin Name of the plugin
+msgid "Show / Hide Section Block"
+msgstr ""
+
+#. Plugin URI of the plugin
+msgid "https://github.com/happyprime/show-hide-section"
+msgstr ""
+
+#. Description of the plugin
+msgid "Display an accessible show/hide interface with details and summary elements."
+msgstr ""
+
+#. Author of the plugin
+msgid "Happy Prime"
+msgstr ""
+
+#. Author URI of the plugin
+msgid "https://happyprime.co/"
+msgstr ""
+
+#: blocks/show-hide-group/index.js:37
+#: build/show-hide-group.js:1
+msgid "Close all"
+msgstr ""
+
+#: blocks/show-hide-group/index.js:47
+#: blocks/show-hide-group/index.js:86
+#: blocks/show-hide-group/index.js:119
+#: build/show-hide-group.js:1
+msgid "Open all"
+msgstr ""
+
+#: blocks/show-hide-group/index.js:57
+#: build/show-hide-group.js:1
+msgid "Has open/close all toggle"
+msgstr ""
+
+#: blocks/show-hide-group/index.js:63
+#: build/show-hide-group.js:1
+msgid "Open/close all toggle will display."
+msgstr ""
+
+#: blocks/show-hide-group/index.js:67
+#: build/show-hide-group.js:1
+msgid "Open/close all toggle will not display."
+msgstr ""
+
+#: blocks/show-hide-section/index.js:37
+#: blocks/show-hide-section/index.js:38
+#: build/show-hide-section.js:1
+msgid "Summary"
+msgstr ""
