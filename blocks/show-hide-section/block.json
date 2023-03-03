@@ -3,9 +3,9 @@
 	"apiVersion": 2,
 	"name": "happyprime/show-hide-section",
 	"title": "Show Hide Section",
-	"textdomain": "happy-prime",
+	"textdomain": "show-hide-section-block",
 	"category": "widgets",
-	"description": "A section of collapsible content.",
+	"description": "A section of collapsible content contained in a details element with a summary.",
 	"icon": "media-document",
 	"parent": [ "happyprime/show-hide-group" ],
 	"attributes": {

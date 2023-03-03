@@ -34,7 +34,7 @@ const Edit = ( props ) => {
 				);
 			} );
 
-			evt.target.innerText = __( 'Close all', 'show-hide-section' );
+			evt.target.innerText = __( 'Close all', 'show-hide-section-block' );
 			evt.target.ariaExpanded = true;
 		} else {
 			details.forEach( ( detail ) => {
@@ -44,7 +44,7 @@ const Edit = ( props ) => {
 				);
 			} );
 
-			evt.target.innerText = __( 'Open all', 'show-hide-section' );
+			evt.target.innerText = __( 'Open all', 'show-hide-section-block' );
 			evt.target.ariaExpanded = false;
 		}
 	};
@@ -56,17 +56,17 @@ const Edit = ( props ) => {
 					<ToggleControl
 						label={ __(
 							'Has open/close all toggle',
-							'show-hide-section'
+							'show-hide-section-block'
 						) }
 						help={
 							hasToggle
 								? __(
 										'Open/close all toggle will display.',
-										'show-hide-section'
+										'show-hide-section-block'
 								  )
 								: __(
 										'Open/close all toggle will not display.',
-										'show-hide-section'
+										'show-hide-section-block'
 								  )
 						}
 						checked={ hasToggle }
@@ -83,7 +83,7 @@ const Edit = ( props ) => {
 						aria-expanded="false"
 						onClick={ toggleAllSections }
 					>
-						{ __( 'Open all', 'show-hide-section' ) }
+						{ __( 'Open all', 'show-hide-section-block' ) }
 					</button>
 				) }
 				<InnerBlocks
@@ -116,7 +116,7 @@ const Save = ( props ) => {
 		<div { ...useBlockProps.save() }>
 			{ hasToggle && (
 				<button className="toggle-all" aria-expanded="false">
-					{ __( 'Open all', 'show-hide-section' ) }
+					{ __( 'Open all', 'show-hide-section-block' ) }
 				</button>
 			) }
 			<InnerBlocks.Content />
