@@ -2,7 +2,7 @@
 /**
  * Handle the server-side registration of the blocks.
  *
- * @package show-hide-section
+ * @package show-hide-section-block
  */
 
 namespace HappyPrime\Blocks\ShowHideGroup;

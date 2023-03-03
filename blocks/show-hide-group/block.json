@@ -3,9 +3,9 @@
 	"apiVersion": 2,
 	"name": "happyprime/show-hide-group",
 	"title": "Show Hide Group",
-	"textdomain": "happy-prime",
+	"textdomain": "show-hide-section-block",
 	"category": "widgets",
-	"description": "Creates accessible summaries that can be toggled to show or hide additional details.",
+	"description": "A group of accessible summaries that can be toggled to show or hide additional details.",
 	"icon": "hidden",
 	"attributes": {
 		"hasToggle": {

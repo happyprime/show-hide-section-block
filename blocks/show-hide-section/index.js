@@ -34,8 +34,8 @@ const Edit = ( props ) => {
 		<details { ...useBlockProps() } open={ isOpen }>
 			<RichText
 				tagName="summary"
-				label={ __( 'Summary', 'show-hide-section' ) }
-				placeholder={ __( 'Summary', 'show-hide-section' ) }
+				label={ __( 'Summary', 'show-hide-section-block' ) }
+				placeholder={ __( 'Summary', 'show-hide-section-block' ) }
 				value={ summary }
 				allowedFormats={ [ 'core/bold', 'core/italic' ] }
 				onChange={ ( value ) => {

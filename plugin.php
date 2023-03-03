@@ -6,7 +6,7 @@
  * Plugin URI: https://github.com/happyprime/show-hide-section
  * Author: Happy Prime
  * Author URI: https://happyprime.co/
- * Text Domain: show-hide-section
+ * Text Domain: show-hide-section-block
  * Domain Path: /languages
  * Requires at least: 6.1
  * Requires PHP: 7.4
@@ -21,7 +21,7 @@
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
  *
- * @package show-hide-section
+ * @package show-hide-section-block
  */
 
 // If this file is called directly, abort.
