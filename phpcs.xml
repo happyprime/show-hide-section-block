@@ -25,5 +25,6 @@
 	<exclude-pattern>*.asset.php</exclude-pattern>
 
 	<rule ref="WordPress-Extra" />
+	<rule ref="VariableAnalysis" />
 	<rule ref="WordPress-Docs" />
 </ruleset>

@@ -8,6 +8,8 @@ vendor/
 .gitignore
 composer.json
 composer.lock
+package.json
+package-lock.json
 phpcs.xml
 README.md
 webpack.config.js
