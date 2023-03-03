@@ -14,7 +14,32 @@
 		}
 	},
 	"supports": {
-		"html": false
+		"align": true,
+		"alignWide": true,
+		"anchor": true,
+		"color": {
+			"background": true,
+			"enableContrastChecker": true,
+			"text": true,
+			"link": true,
+			"gradients": true
+		},
+		"defaultStylePicker": true,
+		"dimensions": {
+			"minHeight": true
+		},
+		"html": false,
+		"position": {
+			"sticky": false
+		},
+		"spacing": {
+			"margin": true,
+			"padding": true
+		},
+		"typography": {
+			"fontSize": true,
+			"lineHeight": true
+		}
 	},
 	"editorScript": "file:../../build/show-hide-group.js"
 }
