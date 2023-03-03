@@ -1,5 +1,5 @@
 # Show / Hide Section Block
-Contributors: jeremyfelt, slocker, philcable
+Contributors: happyprime, jeremyfelt, slocker, philcable
 Tags: collapsible, details, summary
 Requires at least: 6.1
 Tested up to: 6.1
