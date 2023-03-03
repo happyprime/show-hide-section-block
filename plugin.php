@@ -29,4 +29,7 @@ if ( ! defined( 'WPINC' ) ) {
 	die;
 }
 
-require_once __DIR__ . '/includes/block.php';
+define( 'HP_SHS_PLUGIN_DIR', __DIR__ );
+define( 'HP_SHS_PLUGIN_FILE', __FILE__ );
+
+require_once __DIR__ . '/blocks/show-hide-group/index.php';
