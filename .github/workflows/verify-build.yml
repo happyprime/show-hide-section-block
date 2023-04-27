@@ -10,11 +10,11 @@ jobs:
 
     steps:
     - name: Checkout project
-      uses: actions/checkout@v2
+      uses: actions/checkout@v3
       with:
         fetch-depth: 2
     - name: Setup Node.js LTS
-      uses: actions/setup-node@v2
+      uses: actions/setup-node@v3
       with:
         node-version: 'lts/*'
     - name: Install latest NPM
@@ -40,7 +40,7 @@ jobs:
         fi
     - name: Comment on pull request
       if: failure()
-      uses: actions/github-script@v4
+      uses: actions/github-script@v6
       with:
         script: |
           const output = `Changed files were detected after build. Please run project build workflows and check \`git status\` for any missed changes.
