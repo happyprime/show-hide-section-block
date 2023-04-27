@@ -33,3 +33,4 @@ define( 'HP_SHS_PLUGIN_DIR', __DIR__ );
 define( 'HP_SHS_PLUGIN_FILE', __FILE__ );
 
 require_once __DIR__ . '/src/show-hide-group/index.php';
+require_once __DIR__ . '/src/show-hide-section/index.php';

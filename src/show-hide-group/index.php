@@ -1,6 +1,6 @@
 <?php
 /**
- * Handle the server-side registration of the blocks.
+ * Manage the block.
  *
  * @package show-hide-section-block
  */
@@ -13,16 +13,10 @@ add_action( 'enqueue_block_assets', __NAMESPACE__ . '\register_assets', 2 );
 add_filter( 'pre_render_block', __NAMESPACE__ . '\maybe_enqueue_script', 10, 2 );
 
 /**
- * Register the blocks on the server.
+ * Register the block.
  */
 function register() {
-	register_block_type_from_metadata(
-		HP_SHS_PLUGIN_DIR . '/build/show-hide-group'
-	);
-
-	register_block_type_from_metadata(
-		HP_SHS_PLUGIN_DIR . '/build/show-hide-section'
-	);
+	register_block_type_from_metadata( HP_SHS_PLUGIN_DIR . '/build/show-hide-group' );
 }
 
 /**
