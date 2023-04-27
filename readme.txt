@@ -3,7 +3,7 @@ Contributors: happyprime, jeremyfelt, slocker, philcable
 Tags: collapsible, details, summary
 Requires at least: 6.1
 Tested up to: 6.2
-Stable tag: 2.0.1
+Stable tag: 2.0.2
 License: GPLv2 or later
 Requires PHP: 7.4
 
@@ -41,6 +41,12 @@ An option is provided in the block's side panel to toggle an "Open all"/"Close a
 If the toggle is off, no JavaScript is loaded on the front end.
 
 ## Changelog
+
+### 2.0.2
+
+* Fix an issue preventing Open All toggle from working in Chrome.
+* Update `@wordpress/scripts` dependency to 26.3.0.
+* Improve block organization, use of `block.json`.
 
 ### 2.0.1
 

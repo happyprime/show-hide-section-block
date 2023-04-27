@@ -2,7 +2,7 @@
 /**
  * Plugin Name: Show / Hide Section Block
  * Description: Display an accessible show/hide interface with details and summary elements.
- * Version: 2.0.1
+ * Version: 2.0.2
  * Plugin URI: https://wordpress.org/plugins/show-hide-section-block/
  * Author: Happy Prime
  * Author URI: https://happyprime.co/
