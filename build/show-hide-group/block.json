@@ -1,0 +1,46 @@
+{
+  "$schema": "https://json.schemastore.org/block.json",
+  "apiVersion": 2,
+  "name": "happyprime/show-hide-group",
+  "title": "Show Hide Group",
+  "textdomain": "show-hide-section-block",
+  "category": "widgets",
+  "description": "A group of accessible summaries that can be toggled to show or hide additional details.",
+  "icon": "hidden",
+  "attributes": {
+    "hasToggle": {
+      "type": "boolean",
+      "default": false
+    }
+  },
+  "supports": {
+    "align": true,
+    "alignWide": true,
+    "anchor": true,
+    "color": {
+      "background": true,
+      "enableContrastChecker": true,
+      "text": true,
+      "link": true,
+      "gradients": true
+    },
+    "defaultStylePicker": true,
+    "dimensions": {
+      "minHeight": true
+    },
+    "html": false,
+    "position": {
+      "sticky": false
+    },
+    "spacing": {
+      "margin": true,
+      "padding": true
+    },
+    "typography": {
+      "fontSize": true,
+      "lineHeight": true
+    }
+  },
+  "editorScript": "file:index.js",
+  "viewScript": "file:view.js"
+}

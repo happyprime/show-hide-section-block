@@ -1,0 +1,54 @@
+{
+  "$schema": "https://json.schemastore.org/block.json",
+  "apiVersion": 2,
+  "name": "happyprime/show-hide-section",
+  "title": "Show Hide Section",
+  "textdomain": "show-hide-section-block",
+  "category": "widgets",
+  "description": "A section of collapsible content contained in a details element with a summary.",
+  "icon": "media-document",
+  "parent": [
+    "happyprime/show-hide-group"
+  ],
+  "attributes": {
+    "isOpen": {
+      "type": "boolean",
+      "default": false
+    },
+    "summary": {
+      "type": "string",
+      "source": "html",
+      "selector": "summary"
+    }
+  },
+  "supports": {
+    "anchor": true,
+    "align": true,
+    "alignWide": true,
+    "color": {
+      "background": true,
+      "enableContrastChecker": true,
+      "text": true,
+      "link": true,
+      "gradients": true
+    },
+    "defaultStylePicker": true,
+    "dimensions": {
+      "minHeight": true
+    },
+    "html": false,
+    "multiple": true,
+    "position": {
+      "sticky": false
+    },
+    "spacing": {
+      "margin": true,
+      "padding": true
+    },
+    "typography": {
+      "fontSize": true,
+      "lineHeight": true
+    }
+  },
+  "editorScript": "file:index.js"
+}

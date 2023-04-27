@@ -48,5 +48,5 @@
 			"lineHeight": true
 		}
 	},
-	"editorScript": "file:../../build/show-hide-section.js"
+	"editorScript": "file:index.js"
 }
