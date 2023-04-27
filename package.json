@@ -1,6 +1,6 @@
 {
   "name": "show-hide-section",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "description": "Display an accessible show/hide interface with details and summary elements.",
   "author": "Happy Prime",
   "license": "GPL-2.0-or-later",
@@ -17,7 +17,7 @@
 	  "url": "https://github.com/happyprime/show-hide-section-block/"
   },
   "devDependencies": {
-    "@wordpress/scripts": "^25.5.0"
+    "@wordpress/scripts": "^26.3.0"
   },
   "scripts": {
     "build": "wp-scripts build",

@@ -35,6 +35,12 @@ If the toggle is off, no JavaScript is loaded on the front end.
 
 ## Changelog
 
+### 2.0.2
+
+* Fix an issue preventing Open All toggle from working in Chrome.
+* Update `@wordpress/scripts` dependency to 26.3.0.
+* Improve block organization, use of `block.json`.
+
 ### 2.0.1
 
 * Add a variety of `supports` options to `block.json` so that core styles can be applied as expected.

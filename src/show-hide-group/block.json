@@ -41,5 +41,6 @@
 			"lineHeight": true
 		}
 	},
-	"editorScript": "file:../../build/show-hide-group.js"
+	"editorScript": "file:index.js",
+	"viewScript": "file:view.js"
 }
