@@ -35,6 +35,10 @@ If the toggle is off, no JavaScript is loaded on the front end.
 
 ## Changelog
 
+### 2.0.3
+
+* Fix an issue where the front-end script was enqueued twice.
+
 ### 2.0.2
 
 * Fix an issue preventing Open All toggle from working in Chrome.
