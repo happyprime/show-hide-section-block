@@ -8,7 +8,7 @@
 namespace HappyPrime\Blocks\ShowHideGroup;
 
 add_action( 'init', __NAMESPACE__ . '\register' );
-add_action( 'wp_enqueue_scripts', __NAMESPACE__ . '\dequeue_default', 11 );
+add_action( 'wp_enqueue_scripts', __NAMESPACE__ . '\deregister_default', 11 );
 add_action( 'enqueue_block_assets', __NAMESPACE__ . '\register_assets', 2 );
 add_filter( 'pre_render_block', __NAMESPACE__ . '\maybe_enqueue_script', 10, 2 );
 
@@ -20,10 +20,10 @@ function register() {
 }
 
 /**
- * Dequeue the default script handle added via WordPress via block.json.
+ * Deregister the default script handle added via WordPress via block.json.
  */
-function dequeue_default() {
-	wp_dequeue_script( 'happyprime-show-hide-group-view-script' );
+function deregister_default() {
+	wp_deregister_script( 'happyprime-show-hide-group-view-script' );
 }
 
 /**
