@@ -17,7 +17,7 @@
 	  "url": "https://github.com/happyprime/show-hide-section-block/"
   },
   "devDependencies": {
-    "@wordpress/scripts": "^26.3.0"
+    "@wordpress/scripts": "^26.19.0"
   },
   "scripts": {
     "build": "wp-scripts build",
