@@ -92,12 +92,6 @@ const Edit = ( props ) => {
 						[
 							'happyprime/show-hide-section',
 							{},
-							[ [ 'core/paragraph', {} ] ],
-						],
-						[
-							'happyprime/show-hide-section',
-							{},
-							[ [ 'core/paragraph', {} ] ],
 						],
 					] }
 					templateLock={ false }

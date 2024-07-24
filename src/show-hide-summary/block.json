@@ -1,17 +1,18 @@
 {
 	"$schema": "https://json.schemastore.org/block.json",
 	"apiVersion": 2,
-	"name": "happyprime/show-hide-section",
-	"title": "Show Hide Section",
+	"name": "happyprime/show-hide-summary",
+	"title": "Show Hide Summary",
 	"textdomain": "show-hide-section-block",
 	"category": "widgets",
-	"description": "A section of collapsible content contained in a details element with a summary.",
+	"description": "The summary element in a details section.",
 	"icon": "media-document",
-	"parent": [ "happyprime/show-hide-group" ],
+	"parent": [ "happyprime/show-hide-section" ],
 	"attributes": {
-		"isOpen": {
-			"type": "boolean",
-			"default": false
+		"summary": {
+			"type": "string",
+			"source": "html",
+			"selector": "summary"
 		}
 	},
 	"supports": {
