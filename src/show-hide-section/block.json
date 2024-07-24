@@ -1,6 +1,6 @@
 {
 	"$schema": "https://json.schemastore.org/block.json",
-	"apiVersion": 2,
+	"apiVersion": 3,
 	"name": "happyprime/show-hide-section",
 	"title": "Show Hide Section",
 	"textdomain": "show-hide-section-block",
