@@ -14,19 +14,27 @@ const Edit = (props) => {
 
 	// Create an inner blocks template for the content.
 	const TEMPLATE = [
-		[ 'happyprime/show-hide-summary', { summary: __( 'Summary', 'show-hide-section-block' ) } ],
-		[ 'happyprime/show-hide-details', { details: __( 'Details', 'show-hide-section-block' ) } ],
+		[
+			'happyprime/show-hide-summary',
+			{ summary: __('Summary', 'show-hide-section-block') },
+		],
+		[
+			'happyprime/show-hide-details',
+			{ details: __('Details', 'show-hide-section-block') },
+		],
 	];
 
 	// Does this block have focus?
 
-
 	return (
-		<div { ...useBlockProps() }>
+		<div {...useBlockProps()}>
 			<InnerBlocks
-			template={ TEMPLATE }
-			allowedBlocks={ [ 'happyprime/show-hide-summary', 'happyprime/show-hide-details' ] }
-			templateLock="all"
+				template={TEMPLATE}
+				allowedBlocks={[
+					'happyprime/show-hide-summary',
+					'happyprime/show-hide-details',
+				]}
+				templateLock="all"
 			/>
 		</div>
 	);
@@ -34,7 +42,7 @@ const Edit = (props) => {
 
 const Save = () => {
 	return (
-		<details { ...useBlockProps.save() }>
+		<details {...useBlockProps.save()}>
 			<InnerBlocks.Content />
 		</details>
 	);

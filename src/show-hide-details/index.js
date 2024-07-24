@@ -6,29 +6,26 @@ import { __ } from '@wordpress/i18n';
 import metadata from './block.json';
 
 const Edit = () => {
-
 	const TEMPLATE = [
-		[ 'core/paragraph', { placeholder: __( 'Remaining', 'show-hide-section-block' ) } ],
+		[
+			'core/paragraph',
+			{ placeholder: __('Remaining', 'show-hide-section-block') },
+		],
 	];
 
 	return (
 		<>
-			<InnerBlocks
-				template={ TEMPLATE }
-				templateLock={ false }
-			/>
+			<InnerBlocks template={TEMPLATE} templateLock={false} />
 		</>
 	);
 };
 
 const Save = () => {
-	return (
-		<InnerBlocks.Content />
-	);
+	return <InnerBlocks.Content />;
 };
 
 // Register the block.
-registerBlockType( metadata, {
+registerBlockType(metadata, {
 	edit: Edit,
 	save: Save,
-} );
+});
