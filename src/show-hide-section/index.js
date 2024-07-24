@@ -5,7 +5,7 @@ import { __ } from '@wordpress/i18n';
 // Internal dependencies.
 import metadata from './block.json';
 
-const Edit = ( props ) => {
+const Edit = (props) => {
 	const {
 		attributes: { isOpen },
 		setAttributes,
@@ -41,7 +41,7 @@ const Save = () => {
 };
 
 // Register the block.
-registerBlockType( metadata, {
+registerBlockType(metadata, {
 	edit: Edit,
 	save: Save,
-} );
+});

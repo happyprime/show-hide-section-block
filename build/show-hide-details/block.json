@@ -1,16 +1,14 @@
 {
-  "$schema": "https://json.schemastore.org/block.json",
-  "apiVersion": 2,
-  "name": "happyprime/show-hide-details",
-  "title": "Show Hide Details",
-  "textdomain": "show-hide-section-block",
-  "category": "widgets",
-  "description": "The remaining content in a details section.",
-  "icon": "media-document",
-  "parent": [
-    "happyprime/show-hide-section"
-  ],
-  "attributes": {},
-  "supports": {},
-  "editorScript": "file:index.js"
+	"$schema": "https://json.schemastore.org/block.json",
+	"apiVersion": 2,
+	"name": "happyprime/show-hide-details",
+	"title": "Show Hide Details",
+	"textdomain": "show-hide-section-block",
+	"category": "widgets",
+	"description": "The remaining content in a details section.",
+	"icon": "media-document",
+	"parent": [ "happyprime/show-hide-section" ],
+	"attributes": {},
+	"supports": {},
+	"editorScript": "file:index.js"
 }
