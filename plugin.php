@@ -8,7 +8,7 @@
  * Author URI: https://happyprime.co/
  * Text Domain: show-hide-section-block
  * Domain Path: /languages
- * Requires at least: 6.1
+ * Requires at least: 6.4
  * Requires PHP: 7.4
  *
  * This program is free software; you can redistribute it and/or modify

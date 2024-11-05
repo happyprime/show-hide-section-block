@@ -24,8 +24,6 @@ const Edit = (props) => {
 		],
 	];
 
-	// Does this block have focus?
-
 	return (
 		<div {...useBlockProps()}>
 			<InnerBlocks
