@@ -14,6 +14,7 @@ const Edit = (props) => {
 	/**
 	 * Insert a space at the current position of the cursor and then adjust
 	 * the cursor position, accounting for any selection it has made.
+	 *
 	 * @param {Node} node The summary node being edited.
 	 */
 	const insertSpace = (node) => {
