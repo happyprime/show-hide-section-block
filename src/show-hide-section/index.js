@@ -4,6 +4,7 @@ import { __ } from '@wordpress/i18n';
 
 // Internal dependencies.
 import metadata from './block.json';
+import deprecated from './deprecated';
 
 const Edit = (props) => {
 	const {
@@ -50,4 +51,5 @@ const Save = () => {
 registerBlockType(metadata, {
 	edit: Edit,
 	save: Save,
+	deprecated,
 });
