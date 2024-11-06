@@ -1,11 +1,13 @@
 .git
 .github/
-bin/
+.wordpress-org/
 node_modules/
-tests/
 vendor/
 .distignore
+.editorconfig
+.eslintrc.js
 .gitignore
+.prettierrc.js
 composer.json
 composer.lock
 package.json
