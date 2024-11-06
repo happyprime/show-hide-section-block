@@ -88,18 +88,7 @@ const Edit = (props) => {
 				)}
 				<InnerBlocks
 					allowedBlocks={['happyprime/show-hide-section']}
-					template={[
-						[
-							'happyprime/show-hide-section',
-							{},
-							[['core/paragraph', {}]],
-						],
-						[
-							'happyprime/show-hide-section',
-							{},
-							[['core/paragraph', {}]],
-						],
-					]}
+					template={[['happyprime/show-hide-section', {}]]}
 					templateLock={false}
 				/>
 			</div>

@@ -1,88 +1,133 @@
-# Copyright (C) 2023 Happy Prime
+# Copyright (C) 2024 Happy Prime
 # This file is distributed under the same license as the Show / Hide Section Block plugin.
 msgid ""
 msgstr ""
-"Project-Id-Version: Show / Hide Section Block 2.0.0\n"
+"Project-Id-Version: Show / Hide Section Block 2.0.3\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/show-hide-section-block\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2023-03-03T16:41:52+00:00\n"
+"POT-Creation-Date: 2024-11-05T22:28:28+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"X-Generator: WP-CLI 2.6.0\n"
+"X-Generator: WP-CLI 2.10.0\n"
 "X-Domain: show-hide-section-block\n"
 
 #. Plugin Name of the plugin
+#: plugin.php
 msgid "Show / Hide Section Block"
 msgstr ""
 
 #. Plugin URI of the plugin
-msgid "https://github.com/happyprime/show-hide-section"
+#: plugin.php
+msgid "https://wordpress.org/plugins/show-hide-section-block/"
 msgstr ""
 
 #. Description of the plugin
+#: plugin.php
 msgid "Display an accessible show/hide interface with details and summary elements."
 msgstr ""
 
 #. Author of the plugin
+#: plugin.php
 msgid "Happy Prime"
 msgstr ""
 
 #. Author URI of the plugin
+#: plugin.php
 msgid "https://happyprime.co/"
 msgstr ""
 
-#: blocks/show-hide-group/index.js:37
-#: build/show-hide-group.js:1
-msgid "Close all"
+#: build/show-hide-details/index.js:1
+#: src/show-hide-details/index.js:12
+msgid "Remaining"
 msgstr ""
 
-#: blocks/show-hide-group/index.js:47
-#: blocks/show-hide-group/index.js:86
-#: blocks/show-hide-group/index.js:119
-#: build/show-hide-group.js:1
-msgid "Open all"
-msgstr ""
-
-#: blocks/show-hide-group/index.js:57
-#: build/show-hide-group.js:1
+#: build/show-hide-group/index.js:1
+#: src/show-hide-group/index.js:57
 msgid "Has open/close all toggle"
 msgstr ""
 
-#: blocks/show-hide-group/index.js:63
-#: build/show-hide-group.js:1
+#: build/show-hide-group/index.js:1
+#: src/show-hide-group/index.js:63
 msgid "Open/close all toggle will display."
 msgstr ""
 
-#: blocks/show-hide-group/index.js:67
-#: build/show-hide-group.js:1
+#: build/show-hide-group/index.js:1
+#: src/show-hide-group/index.js:67
 msgid "Open/close all toggle will not display."
 msgstr ""
 
-#: blocks/show-hide-section/index.js:37
-#: blocks/show-hide-section/index.js:38
-#: build/show-hide-section.js:1
+#: build/show-hide-group/index.js:1
+#: src/show-hide-group/index.js:37
+msgid "Close all"
+msgstr ""
+
+#: build/show-hide-group/index.js:1
+#: src/show-hide-group/index.js:47
+#: src/show-hide-group/index.js:86
+#: src/show-hide-group/index.js:108
+msgid "Open all"
+msgstr ""
+
+#: build/show-hide-section/index.js:1
+#: build/show-hide-summary/index.js:1
+#: src/show-hide-section/index.js:19
+#: src/show-hide-summary/index.js:18
+#: src/show-hide-summary/index.js:19
 msgid "Summary"
 msgstr ""
 
-#: blocks/show-hide-group/block.json
+#: build/show-hide-section/index.js:1
+#: src/show-hide-section/index.js:23
+msgid "Details"
+msgstr ""
+
+#: build/show-hide-details/block.json
+#: src/show-hide-details/block.json
+msgctxt "block title"
+msgid "Show Hide Details"
+msgstr ""
+
+#: build/show-hide-details/block.json
+#: src/show-hide-details/block.json
+msgctxt "block description"
+msgid "The remaining content in a details section."
+msgstr ""
+
+#: build/show-hide-group/block.json
+#: src/show-hide-group/block.json
 msgctxt "block title"
 msgid "Show Hide Group"
 msgstr ""
 
-#: blocks/show-hide-group/block.json
+#: build/show-hide-group/block.json
+#: src/show-hide-group/block.json
 msgctxt "block description"
 msgid "A group of accessible summaries that can be toggled to show or hide additional details."
 msgstr ""
 
-#: blocks/show-hide-section/block.json
+#: build/show-hide-section/block.json
+#: src/show-hide-section/block.json
 msgctxt "block title"
 msgid "Show Hide Section"
 msgstr ""
 
-#: blocks/show-hide-section/block.json
+#: build/show-hide-section/block.json
+#: src/show-hide-section/block.json
 msgctxt "block description"
 msgid "A section of collapsible content contained in a details element with a summary."
+msgstr ""
+
+#: build/show-hide-summary/block.json
+#: src/show-hide-summary/block.json
+msgctxt "block title"
+msgid "Show Hide Summary"
+msgstr ""
+
+#: build/show-hide-summary/block.json
+#: src/show-hide-summary/block.json
+msgctxt "block description"
+msgid "The summary element in a details section."
 msgstr ""

@@ -12,11 +12,6 @@
 		"isOpen": {
 			"type": "boolean",
 			"default": false
-		},
-		"summary": {
-			"type": "string",
-			"source": "html",
-			"selector": "summary"
 		}
 	},
 	"supports": {

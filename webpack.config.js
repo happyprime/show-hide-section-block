@@ -4,6 +4,11 @@ const CopyPlugin = require('copy-webpack-plugin');
 
 module.exports = {
 	entry: {
+		'show-hide-details/index': path.resolve(
+			__dirname,
+			'src/show-hide-details',
+			'index.js'
+		),
 		'show-hide-group/index': path.resolve(
 			__dirname,
 			'src/show-hide-group',
@@ -17,6 +22,11 @@ module.exports = {
 		'show-hide-section/index': path.resolve(
 			__dirname,
 			'src/show-hide-section',
+			'index.js'
+		),
+		'show-hide-summary/index': path.resolve(
+			__dirname,
+			'src/show-hide-summary',
 			'index.js'
 		),
 	},
