@@ -45,6 +45,7 @@ const v2 = {
 	},
 	supports: {
 		html: true,
+		anchor: true,
 	},
 	isEligible({ summary }) {
 		return typeof summary === 'string' && summary.length > 0;
