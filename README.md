@@ -35,6 +35,16 @@ If the toggle is off, no JavaScript is loaded on the front end.
 
 ## Changelog
 
+### 3.0.0
+
+* Refactor block markup to improve editorial experience and formatting options.
+* Introduce `happyprime/show-hide-summary` block to manage `<summary>` content.
+* Introduce `happyprime/show-hide-details` block to manage remaningin `<details>` content.
+* Upgrade `happyprime/show-hide-group` and `happyprime/show-hide-section` blocks to API v3.
+* Add a deprecation routine to transform 2.0.x block markup into the new format.
+* Replace `@wordpress/scripts` with slimmer build configuration.
+* Bump minimum WordPress version to 6.4; confirm compatibility with 6.7.
+
 ### 2.0.3
 
 * Fix an issue where the front-end script was enqueued twice.
