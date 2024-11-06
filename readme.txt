@@ -11,26 +11,33 @@ Display an accessible show/hide interface with details and summary elements.
 
 ## Description
 
-Show / Hide Section Block provides two blocks: a Show / Hide Group block that is populated with one or more Show / Hide Section blocks.
+Show / Hide Section Block provides four blocks that are used to display a group of `<details>` elements that each contain a `<summary>` and an arbitrary number of additional blocks.
+
+* The Show Hide Group block is a wrapping `<div>`.
+* The Show Hide Section block is a wrapping `<details>`. One or more of these blocks is added to a Show Hide Group block.
+* The Show Hide Summary block contains the content for a `<summary>` tag. One of these blocks is inside each Show Hide Section block.
+* The Show Hide Details block contains arbitrary content. One of these blocks is added inside each Show Hide Section block.
 
 The HTML output for an individual section is:
 
 	<!-- Each section block has a details element. -->
-	<details>
+	<details class="wp-block-happyprime-show-hide-section">
 		<!-- Each details element has a summary and additional, collapsible content. -->
-		<summary>Summary text</summary>
+		<summary class="wp-block-happyprime-show-hide-summary">Summary text</summary>
 		<!-- Additional inner blocks of any type are populated here. -->
 	</details>
 
 The HTML output for the group is:
 
-	<div>
-		<details>
-			<summary></summary>
+	<div class="wp-block-happyprime-show-hide-group">
+		<!-- Optional based on attribute -->
+		<button class="toggle-all" aria-expanded="false">Open all</button>
+		<details class="wp-block-happyprime-show-hide-section">
+			<summary class="wp-block-happyprime-show-hide-summary"></summary>
 			<!-- Additional blocks to be shown/hidden -->
 		</details>
-		<details>
-			<summary></summary>
+		<details class="wp-block-happyprime-show-hide-section">
+			<summary class="wp-block-happyprime-show-hide-summary"></summary>
 			<!-- Additional blocks to be shown hidden -->
 		</details>
 		<!-- Additional section blocks -->
@@ -38,7 +45,7 @@ The HTML output for the group is:
 
 An option is provided in the block's side panel to toggle an "Open all"/"Close all" button. If this is toggled on for a block, an additional `<button>` element will be inserted and JavaScript will be used on the front-end to control the show/hide behavior of all `<details>` elements in the group at once.
 
-If the toggle is off, no JavaScript is loaded on the front end.
+If the toggle is off, no JavaScript is loaded on the front end and only the browser's default behavior is used for opening and closing `<details>` elements.
 
 ## Changelog
 
