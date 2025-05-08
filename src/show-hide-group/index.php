@@ -76,7 +76,7 @@ function maybe_enqueue_script( $pre_render, array $parsed_block ) {
 		}
 	}
 
-	// If we've enqueued the script, remove the filter to avoid unneccesary processing.
+	// If we've enqueued the script, remove the filter to avoid unnecessary processing.
 	if ( $enqueued ) {
 		remove_filter( 'pre_render_block', __NAMESPACE__ . '\maybe_enqueue_script', 10, 2 );
 	}
