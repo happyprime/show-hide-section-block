@@ -1,5 +1,5 @@
-# Copyright (C) 2024 Happy Prime
-# This file is distributed under the same license as the Show / Hide Section Block plugin.
+# Copyright (C) 2025 Happy Prime
+# This file is distributed under the GPLv2 or later.
 msgid ""
 msgstr ""
 "Project-Id-Version: Show / Hide Section Block 3.0.0\n"
@@ -9,9 +9,9 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2024-11-06T05:29:22+00:00\n"
+"POT-Creation-Date: 2025-05-08T16:13:53+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"X-Generator: WP-CLI 2.10.0\n"
+"X-Generator: WP-CLI 2.11.0\n"
 "X-Domain: show-hide-section-block\n"
 
 #. Plugin Name of the plugin
