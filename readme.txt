@@ -2,7 +2,7 @@
 Contributors: happyprime, jeremyfelt, slocker, philcable
 Tags: collapsible, details, summary
 Requires at least: 6.4
-Tested up to: 6.7
+Tested up to: 6.8
 Stable tag: 3.0.0
 License: GPLv2 or later
 Requires PHP: 7.4

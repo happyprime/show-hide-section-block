@@ -6,6 +6,8 @@
  * Plugin URI: https://wordpress.org/plugins/show-hide-section-block/
  * Author: Happy Prime
  * Author URI: https://happyprime.co/
+ * License:      GPLv2 or later
+ * License URI:  https://www.gnu.org/licenses/old-licenses/gpl-2.0.html
  * Text Domain: show-hide-section-block
  * Domain Path: /languages
  * Requires at least: 6.4
