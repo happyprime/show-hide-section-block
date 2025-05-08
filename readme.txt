@@ -3,7 +3,7 @@ Contributors: happyprime, jeremyfelt, slocker, philcable
 Tags: collapsible, details, summary
 Requires at least: 6.4
 Tested up to: 6.8
-Stable tag: 3.0.0
+Stable tag: 3.1.0
 License: GPLv2 or later
 Requires PHP: 7.4
 
@@ -48,6 +48,13 @@ An option is provided in the block's side panel to toggle an "Open all"/"Close a
 If the toggle is off, no JavaScript is loaded on the front end and only the browser's default behavior is used for opening and closing `<details>` elements.
 
 ## Changelog
+
+### 3.1.0
+
+* Automatically open an associated `<details>` element when its anchor is used in a URL.
+* Update dependencies.
+* Confirm compatibility with WordPress 6.8.
+* Confirm license in plugin header.
 
 ### 3.0.0
 

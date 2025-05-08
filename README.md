@@ -42,6 +42,13 @@ If the toggle is off, no JavaScript is loaded on the front end and only the brow
 
 ## Changelog
 
+### 3.1.0
+
+* Automatically open an associated `<details>` element when its anchor is used in a URL.
+* Update dependencies.
+* Confirm compatibility with WordPress 6.8.
+* Confirm license in plugin header.
+
 ### 3.0.0
 
 * Refactor block markup to improve editorial experience and formatting options.
