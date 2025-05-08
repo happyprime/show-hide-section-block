@@ -31,5 +31,28 @@
 		}
 	};
 
-	document.addEventListener('DOMContentLoaded', handleToggleButton);
+	/**
+	 * Set a details element to `open` if its corresponding hash is in the URL.
+	 *
+	 * @returns {void}
+	 */
+	const handleHashNavigation = () => {
+		if (!window.location.hash) {
+			return;
+		}
+
+		const targetDetails = document.querySelector(
+			`details.wp-block-happyprime-show-hide-section${window.location.hash}`
+		);
+
+		if (targetDetails) {
+			targetDetails.setAttribute('open', 'true');
+		}
+	};
+
+	document.addEventListener('DOMContentLoaded', () => {
+		handleToggleButton();
+		handleHashNavigation();
+		window.addEventListener('hashchange', handleHashNavigation);
+	});
 }
