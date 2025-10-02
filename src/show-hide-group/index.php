@@ -71,7 +71,7 @@ function maybe_enqueue_script( $pre_render, array $parsed_block ) {
 		// If a section has an ID attribute, enqueue the script to support
 		// improved hash navigation.
 		if ( $inner_html->next_tag( [ 'id' => true ] ) ) {
-			wp_enqueue_script( 'happyprime-show-hide-section-view' );
+			wp_enqueue_script( 'happyprime-show-hide-group-view' );
 			$enqueued = true;
 		}
 	}
