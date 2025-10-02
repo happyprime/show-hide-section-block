@@ -1,4 +1,12 @@
 {
+	/**
+	 * Attach click event handlers to toggle all buttons.
+	 *
+	 * Finds all toggle buttons in show-hide-group blocks and adds click handlers
+	 * that open or close all detail elements within the group.
+	 *
+	 * @returns {void}
+	 */
 	const handleToggleButton = () => {
 		const toggleAll = document.querySelectorAll(
 			'.wp-block-happyprime-show-hide-group .toggle-all'
