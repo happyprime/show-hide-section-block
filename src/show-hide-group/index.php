@@ -8,7 +8,9 @@
 namespace HappyPrime\Blocks\ShowHideGroup;
 
 add_action( 'init', __NAMESPACE__ . '\register' );
+// Priority 11 to run after WordPress enqueues the default script (priority 10).
 add_action( 'wp_enqueue_scripts', __NAMESPACE__ . '\deregister_default', 11 );
+// Priority 2 to register early in the enqueue_block_assets sequence.
 add_action( 'enqueue_block_assets', __NAMESPACE__ . '\register_assets', 2 );
 add_filter( 'pre_render_block', __NAMESPACE__ . '\maybe_enqueue_script', 10, 2 );
 
