@@ -43,6 +43,11 @@ function register_assets() {
 		$asset_data['version'],
 		true
 	);
+
+	wp_set_script_translations(
+		'happyprime-show-hide-group-view',
+		'show-hide-section-block'
+	);
 }
 
 /**

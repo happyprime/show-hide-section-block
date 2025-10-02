@@ -1,4 +1,6 @@
 {
+	const { __ } = wp.i18n;
+
 	const handleToggleButton = () => {
 		const toggleAll = document.querySelectorAll(
 			'.wp-block-happyprime-show-hide-group .toggle-all'
@@ -16,14 +18,14 @@
 							detail.setAttribute('open', 'true');
 						});
 
-						toggle.innerText = 'Close All';
+						toggle.innerText = __('Close all', 'show-hide-section-block');
 						toggle.ariaExpanded = 'true';
 					} else {
 						details.forEach((detail) => {
 							detail.removeAttribute('open');
 						});
 
-						toggle.innerText = 'Open All';
+						toggle.innerText = __('Open all', 'show-hide-section-block');
 						toggle.ariaExpanded = 'false';
 					}
 				})
