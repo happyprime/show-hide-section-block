@@ -15,7 +15,7 @@ add_filter( 'pre_render_block', __NAMESPACE__ . '\maybe_enqueue_script', 10, 2 )
 /**
  * Register the block.
  */
-function register() {
+function register(): void {
 	register_block_type_from_metadata( HP_SHS_PLUGIN_DIR . '/build/show-hide-group' );
 }
 
@@ -29,7 +29,7 @@ function deregister_default(): void {
 /**
  * Make front-end scripting available for enqueue if the block is in use.
  */
-function register_assets() {
+function register_assets(): void {
 	if ( ! has_block( 'happyprime/show-hide-group' ) || is_admin() ) {
 		return;
 	}
