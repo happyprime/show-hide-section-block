@@ -54,7 +54,11 @@ function register_assets() {
  * @return string|null Unmodified.
  */
 function maybe_enqueue_script( $pre_render, array $parsed_block ) {
-	$enqueued = false;
+	static $script_enqueued = false;
+
+	if ( $script_enqueued ) {
+		return $pre_render;
+	}
 
 	if ( 'happyprime/show-hide-group' !== $parsed_block['blockName'] && 'happyprime/show-hide-section' !== $parsed_block['blockName'] ) {
 		return $pre_render;
@@ -64,7 +68,7 @@ function maybe_enqueue_script( $pre_render, array $parsed_block ) {
 	// toggle all behaviour.
 	if ( 'happyprime/show-hide-group' === $parsed_block['blockName'] && isset( $parsed_block['attrs']['hasToggle'] ) && $parsed_block['attrs']['hasToggle'] ) {
 		wp_enqueue_script( 'happyprime-show-hide-group-view' );
-		$enqueued = true;
+		$script_enqueued = true;
 	} elseif ( 'happyprime/show-hide-section' === $parsed_block['blockName'] ) {
 		$inner_html = new \WP_HTML_Tag_Processor( $parsed_block['innerHTML'] );
 
@@ -72,13 +76,8 @@ function maybe_enqueue_script( $pre_render, array $parsed_block ) {
 		// improved hash navigation.
 		if ( $inner_html->next_tag( [ 'id' => true ] ) ) {
 			wp_enqueue_script( 'happyprime-show-hide-section-view' );
-			$enqueued = true;
+			$script_enqueued = true;
 		}
-	}
-
-	// If we've enqueued the script, remove the filter to avoid unnecessary processing.
-	if ( $enqueued ) {
-		remove_filter( 'pre_render_block', __NAMESPACE__ . '\maybe_enqueue_script', 10, 2 );
 	}
 
 	return $pre_render;
