@@ -34,7 +34,7 @@ const Save = (props) => {
 
 	return (
 		<summary {...useBlockProps.save()}>
-			<RichText.Content tag={'summary'} value={summary} />
+			<RichText.Content tagName="div" value={summary} />
 		</summary>
 	);
 };
