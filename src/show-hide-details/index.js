@@ -13,11 +13,7 @@ const Edit = () => {
 		],
 	];
 
-	return (
-		<>
-			<InnerBlocks template={TEMPLATE} templateLock={false} />
-		</>
-	);
+	return <InnerBlocks template={TEMPLATE} templateLock={false} />;
 };
 
 const Save = () => {
