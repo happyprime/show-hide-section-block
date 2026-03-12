@@ -13,5 +13,6 @@ composer.lock
 package.json
 package-lock.json
 phpcs.xml
+phpstan.neon.dist
 README.md
 webpack.config.js
