@@ -12,6 +12,6 @@ add_action( 'init', __NAMESPACE__ . '\register' );
 /**
  * Register the block.
  */
-function register() {
+function register(): void {
 	register_block_type_from_metadata( HP_SHS_PLUGIN_DIR . '/build/show-hide-summary' );
 }
