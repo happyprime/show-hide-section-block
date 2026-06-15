@@ -1,3 +1,12 @@
 node_modules
 vendor
 .reviews/
+
+# E2E test artifacts
+/tests/e2e/test-results/
+/tests/e2e/playwright-report/
+/tests/e2e/.auth/*.json
+/tests/e2e/.env-started-by-tests
+
+# wp-env
+/.wp-env.override.json

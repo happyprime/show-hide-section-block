@@ -1,6 +1,8 @@
 {
 	"core": "WordPress/WordPress#7.0",
 	"phpVersion": "8.2",
+	"port": 8891,
+	"testsEnvironment": false,
 	"plugins": [
 		"."
 	],

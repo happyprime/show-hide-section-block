@@ -18,5 +18,7 @@ package.json
 package-lock.json
 phpcs.xml
 phpstan.neon.dist
+playwright.config.ts
 README.md
+tests/
 webpack.config.js
