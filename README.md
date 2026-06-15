@@ -40,6 +40,21 @@ An option is provided in the block's side panel to toggle an "Open all"/"Close a
 
 If the toggle is off, no JavaScript is loaded on the front end and only the browser's default behavior is used for opening and closing `<details>` elements.
 
+## Development & testing
+
+A local WordPress environment is provided via [`@wordpress/env`](https://developer.wordpress.org/block-editor/reference-guides/packages/packages-env/) on port `8891`:
+
+	npm install
+	npm run build
+	npm run env:start
+
+End-to-end tests use [Playwright](https://playwright.dev/) and assert the core functionality in both the editor and on the front end (the block scaffolds and publishes, the native `<details>`/`<summary>` interface toggles, and the group "Open all"/"Close all" control works):
+
+	npx playwright install chromium   # first run only
+	npm run test:e2e
+
+`npm run test:e2e` starts wp-env automatically if it is not already running and stops it again afterward; an environment started manually with `npm run env:start` is reused and left running.
+
 ## Changelog
 
 ### 3.1.0
