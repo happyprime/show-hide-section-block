@@ -10,6 +10,7 @@ import { __ } from '@wordpress/i18n';
 
 // Internal dependencies.
 import metadata from './block.json';
+import deprecated from './deprecated';
 
 const Edit = (props) => {
 	const {
@@ -104,8 +105,10 @@ const Save = (props) => {
 	return (
 		<div {...useBlockProps.save()}>
 			{hasToggle && (
+				// Saved markup must not depend on the locale of whoever
+				// saves the post. The front-end script translates the label.
 				<button className="toggle-all" aria-expanded="false">
-					{__('Open all', 'show-hide-section-block')}
+					Open all
 				</button>
 			)}
 			<InnerBlocks.Content />
@@ -117,4 +120,5 @@ const Save = (props) => {
 registerBlockType(metadata, {
 	edit: Edit,
 	save: Save,
+	deprecated,
 });

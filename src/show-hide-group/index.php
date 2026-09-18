@@ -31,6 +31,8 @@ function register(): void {
 		$asset_data['version'],
 		true
 	);
+
+	wp_set_script_translations( VIEW_SCRIPT_HANDLE, 'show-hide-section-block' );
 }
 
 /**
