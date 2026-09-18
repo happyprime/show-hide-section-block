@@ -1,3 +1,5 @@
+import { __ } from '@wordpress/i18n';
+
 const SECTION_SELECTOR = 'details.wp-block-happyprime-show-hide-section';
 
 /**
@@ -19,7 +21,9 @@ const handleToggleButtons = () => {
 			});
 
 			toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
-			toggle.textContent = open ? 'Close all' : 'Open all';
+			toggle.textContent = open
+				? __('Close all', 'show-hide-section-block')
+				: __('Open all', 'show-hide-section-block');
 		});
 	});
 };

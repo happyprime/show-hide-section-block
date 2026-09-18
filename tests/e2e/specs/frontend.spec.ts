@@ -118,15 +118,22 @@ test.describe( 'Show / Hide Section block — front end', () => {
 		await expect( page.getByText( 'First hidden body.' ) ).toBeHidden();
 		await expect( page.getByText( 'Second hidden body.' ) ).toBeHidden();
 
+		await expect( toggleAll ).toHaveText( 'Open all' );
+		await expect( toggleAll ).toHaveAttribute( 'aria-expanded', 'false' );
+
 		// Opening all reveals both sections' content.
 		await toggleAll.click();
 		await expect( page.getByText( 'First hidden body.' ) ).toBeVisible();
 		await expect( page.getByText( 'Second hidden body.' ) ).toBeVisible();
+		await expect( toggleAll ).toHaveText( 'Close all' );
+		await expect( toggleAll ).toHaveAttribute( 'aria-expanded', 'true' );
 
 		// Toggling again collapses them back.
 		await toggleAll.click();
 		await expect( page.getByText( 'First hidden body.' ) ).toBeHidden();
 		await expect( page.getByText( 'Second hidden body.' ) ).toBeHidden();
+		await expect( toggleAll ).toHaveText( 'Open all' );
+		await expect( toggleAll ).toHaveAttribute( 'aria-expanded', 'false' );
 	} );
 
 	test( 'the view script only loads when a block needs it', async ( {
