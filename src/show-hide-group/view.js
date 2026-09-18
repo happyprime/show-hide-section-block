@@ -1,58 +1,66 @@
-{
-	const handleToggleButton = () => {
-		const toggleAll = document.querySelectorAll(
-			'.wp-block-happyprime-show-hide-group .toggle-all'
-		);
+const SECTION_SELECTOR = 'details.wp-block-happyprime-show-hide-section';
 
-		if (toggleAll.length > 0) {
-			toggleAll.forEach((toggle) =>
-				toggle.addEventListener('click', () => {
-					const details = toggle.parentElement.querySelectorAll(
-						'details.wp-block-happyprime-show-hide-section'
-					);
+/**
+ * Wires each group's open/close all button to the sections it contains.
+ */
+const handleToggleButtons = () => {
+	const toggles = document.querySelectorAll(
+		'.wp-block-happyprime-show-hide-group > .toggle-all'
+	);
 
-					if ('true' !== toggle.ariaExpanded) {
-						details.forEach((detail) => {
-							detail.setAttribute('open', 'true');
-						});
+	toggles.forEach((toggle) => {
+		toggle.addEventListener('click', () => {
+			const sections =
+				toggle.parentElement.querySelectorAll(SECTION_SELECTOR);
+			const open = 'true' !== toggle.getAttribute('aria-expanded');
 
-						toggle.innerText = 'Close All';
-						toggle.ariaExpanded = 'true';
-					} else {
-						details.forEach((detail) => {
-							detail.removeAttribute('open');
-						});
+			sections.forEach((section) => {
+				section.open = open;
+			});
 
-						toggle.innerText = 'Open All';
-						toggle.ariaExpanded = 'false';
-					}
-				})
-			);
-		}
-	};
-
-	/**
-	 * Set a details element to `open` if its corresponding hash is in the URL.
-	 *
-	 * @returns {void}
-	 */
-	const handleHashNavigation = () => {
-		if (!window.location.hash) {
-			return;
-		}
-
-		const targetDetails = document.querySelector(
-			`details.wp-block-happyprime-show-hide-section${window.location.hash}`
-		);
-
-		if (targetDetails) {
-			targetDetails.setAttribute('open', 'true');
-		}
-	};
-
-	document.addEventListener('DOMContentLoaded', () => {
-		handleToggleButton();
-		handleHashNavigation();
-		window.addEventListener('hashchange', handleHashNavigation);
+			toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+			toggle.textContent = open ? 'Close all' : 'Open all';
+		});
 	});
+};
+
+/**
+ * Opens every section that contains the element the URL hash points at.
+ *
+ * The hash is looked up by id rather than used in a selector. A hash such as
+ * `#1` or `#:~:text=…` is not a valid selector and would throw.
+ */
+const handleHashNavigation = () => {
+	const { hash } = window.location;
+
+	if (hash.length < 2) {
+		return;
+	}
+
+	let id;
+
+	try {
+		id = decodeURIComponent(hash.slice(1));
+	} catch {
+		return;
+	}
+
+	let section = document.getElementById(id)?.closest(SECTION_SELECTOR);
+
+	while (section) {
+		section.open = true;
+		section = section.parentElement?.closest(SECTION_SELECTOR);
+	}
+};
+
+const init = () => {
+	handleToggleButtons();
+	handleHashNavigation();
+	window.addEventListener('hashchange', handleHashNavigation);
+};
+
+if ('loading' === document.readyState) {
+	document.addEventListener('DOMContentLoaded', init);
+} else {
+	init();
 }
