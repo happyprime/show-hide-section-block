@@ -15,7 +15,7 @@ const Edit = (props) => {
 		<summary {...useBlockProps()}>
 			<RichText
 				tagName="div"
-				label={__('Summary', 'show-hide-section-block')}
+				aria-label={__('Summary', 'show-hide-section-block')}
 				placeholder={__('Summary', 'show-hide-section-block')}
 				value={summary}
 				allowedFormats={['core/bold', 'core/italic']}

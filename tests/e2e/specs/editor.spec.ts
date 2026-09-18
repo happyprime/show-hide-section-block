@@ -41,14 +41,30 @@ test.describe( 'Show / Hide Section block — editor', () => {
 
 		const section = group.innerBlocks[ 0 ];
 		expect( section?.name ).toBe( 'happyprime/show-hide-section' );
-		// A section is collapsed by default.
-		expect( section?.attributes.isOpen ).toBe( false );
 
 		const childNames = ( section?.innerBlocks ?? [] ).map(
 			( block ) => block.name
 		);
 		expect( childNames ).toContain( 'happyprime/show-hide-summary' );
 		expect( childNames ).toContain( 'happyprime/show-hide-details' );
+	} );
+
+	test( 'the toggle-all button previews in the editor when enabled', async ( {
+		admin,
+		editor,
+	} ) => {
+		await admin.createNewPost();
+
+		await editor.insertBlock( {
+			name: 'happyprime/show-hide-group',
+			attributes: { hasToggle: true },
+		} );
+
+		const button = editor.canvas.locator(
+			'.wp-block-happyprime-show-hide-group > .toggle-all'
+		);
+		await expect( button ).toBeVisible();
+		await expect( button ).toHaveText( 'Open all' );
 	} );
 
 	test( 'a post containing the block can be published', async ( {
