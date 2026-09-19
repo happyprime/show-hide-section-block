@@ -1,5 +1,5 @@
 import { createBlock } from '@wordpress/blocks';
-import { InnerBlocks, useBlockProps } from '@wordpress/block-editor';
+import { InnerBlocks, RichText, useBlockProps } from '@wordpress/block-editor';
 
 /**
  * Deprecate the block markup provided with Show Hide Section 2.x.x.
@@ -14,6 +14,11 @@ import { InnerBlocks, useBlockProps } from '@wordpress/block-editor';
  * Now, we wrap summary and details content into separate blocks so that we
  * can improve the editing experience and provide more formatting options around
  * these individual tags.
+ *
+ * A deprecation entry does not inherit the block's `supports`; without them
+ * the regenerated markup has no anchor, alignment, color or spacing classes
+ * and a 2.x section that used any of them fails validation. These are the
+ * supports 2.0.3 declared.
  */
 const v2 = {
 	attributes: {
@@ -23,29 +28,59 @@ const v2 = {
 			selector: 'summary',
 		},
 	},
+	supports: {
+		anchor: true,
+		align: true,
+		alignWide: true,
+		color: {
+			background: true,
+			enableContrastChecker: true,
+			text: true,
+			link: true,
+			gradients: true,
+		},
+		defaultStylePicker: true,
+		dimensions: {
+			minHeight: true,
+		},
+		html: false,
+		multiple: true,
+		position: {
+			sticky: false,
+		},
+		spacing: {
+			margin: true,
+			padding: true,
+		},
+		typography: {
+			fontSize: true,
+			lineHeight: true,
+		},
+	},
 	save({ attributes }) {
 		return (
 			<details {...useBlockProps.save()}>
-				<summary>{attributes.summary}</summary>
+				<RichText.Content
+					tagName="summary"
+					value={attributes.summary}
+				/>
 				<InnerBlocks.Content />
 			</details>
 		);
 	},
 	migrate(attributes, innerBlocks) {
+		// Everything but the summary (anchor, align, style, ...) stays on
+		// the section.
+		const { summary, ...sectionAttributes } = attributes;
+
 		const newInnerBlocks = [
 			// The existing summary content is moved to a summary block.
-			createBlock('happyprime/show-hide-summary', {
-				summary: attributes.summary,
-			}),
+			createBlock('happyprime/show-hide-summary', { summary }),
 			// All existing inner blocks are moved to a details block.
 			createBlock('happyprime/show-hide-details', {}, innerBlocks),
 		];
 
-		return [{}, newInnerBlocks];
-	},
-	supports: {
-		html: true,
-		anchor: true,
+		return [sectionAttributes, newInnerBlocks];
 	},
 	isEligible({ summary }) {
 		return typeof summary === 'string' && summary.length > 0;
