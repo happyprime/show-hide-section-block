@@ -75,8 +75,8 @@ function maybe_enqueue_script( $pre_render, array $parsed_block ) {
 /**
  * Determines whether a section block's `<details>` element has an id.
  *
- * The anchor lives only in the saved HTML, not in the block's attributes,
- * so the markup is inspected.
+ * Current WordPress also stores the anchor in the block's attributes, but
+ * older content has it only in the saved HTML, so the markup is inspected.
  *
  * @param array<string, mixed> $parsed_block The parsed block data.
  * @return bool
