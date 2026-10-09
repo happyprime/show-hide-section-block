@@ -24,7 +24,9 @@ export default defineConfig({
 	fullyParallel: true,
 	forbidOnly: !!process.env.CI,
 	retries: process.env.CI ? 2 : 0,
-	workers: process.env.CI ? 1 : undefined,
+	// Every test shares one admin user, so the persisted editor preferences
+	// (for example the dismissed welcome guide) race across parallel workers.
+	workers: 1,
 	reporter: [['html', { outputFolder: './tests/e2e/playwright-report' }]],
 	use: {
 		baseURL,
