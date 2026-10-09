@@ -7,6 +7,10 @@
 
 namespace HappyPrime\Blocks\ShowHideGroup;
 
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 const VIEW_SCRIPT_HANDLE = 'happyprime-show-hide-group-view';
 
 add_action( 'init', __NAMESPACE__ . '\register' );

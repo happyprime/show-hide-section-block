@@ -7,6 +7,10 @@
 
 namespace HappyPrime\Blocks\ShowHideSection;
 
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 add_action( 'init', __NAMESPACE__ . '\register' );
 
 /**
