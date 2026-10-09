@@ -78,4 +78,44 @@ test.describe( 'Show / Hide Section block — 2.x migration', () => {
 			emptySummary.innerBlocks[ 1 ].innerBlocks[ 0 ].attributes.content
 		).toBe( 'Body under an empty summary.' );
 	} );
+
+	test( 'a group saved under a translated label migrates', async ( {
+		admin,
+		page,
+	} ) => {
+		await admin.createNewPost();
+
+		// Markup as 3.1.0 saved it for an editor whose locale translated
+		// "Open all". Parsing it with that translation loaded must match the
+		// deprecated save, alignment and colour classes included.
+		const result = await page.evaluate( () => {
+			const { i18n, blocks } = window.wp;
+			const content = `<!-- wp:happyprime/show-hide-group {"hasToggle":true,"align":"wide","backgroundColor":"accent-5"} -->
+<div class="wp-block-happyprime-show-hide-group alignwide has-accent-5-background-color has-background"><button class="toggle-all" aria-expanded="false">Alle öffnen</button></div>
+<!-- /wp:happyprime/show-hide-group -->`;
+
+			i18n.setLocaleData(
+				{ 'Open all': [ 'Alle öffnen' ] },
+				'show-hide-section-block'
+			);
+			const [ group ] = blocks.parse( content );
+			i18n.resetLocaleData( {}, 'show-hide-section-block' );
+
+			return {
+				isValid: group.isValid,
+				attributes: group.attributes,
+				saved: blocks.serialize( group ),
+			};
+		} );
+
+		expect( result.isValid ).toBe( true );
+		expect( result.attributes ).toMatchObject( {
+			hasToggle: true,
+			align: 'wide',
+			backgroundColor: 'accent-5',
+		} );
+		expect( result.saved ).toContain(
+			'<button class="toggle-all" aria-expanded="false">Open all</button>'
+		);
+	} );
 } );

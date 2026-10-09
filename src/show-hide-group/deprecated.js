@@ -9,8 +9,45 @@ import { __ } from '@wordpress/i18n';
  * writes the untranslated label and the front-end script translates it.
  * This entry regenerates the translated label so those posts migrate
  * instead of failing validation.
+ *
+ * A deprecation entry does not inherit the block's `attributes` or
+ * `supports`. These are the ones 3.1.0 declared.
  */
 const v1 = {
+	attributes: {
+		hasToggle: {
+			type: 'boolean',
+			default: false,
+		},
+	},
+	supports: {
+		align: true,
+		alignWide: true,
+		anchor: true,
+		color: {
+			background: true,
+			enableContrastChecker: true,
+			text: true,
+			link: true,
+			gradients: true,
+		},
+		defaultStylePicker: true,
+		dimensions: {
+			minHeight: true,
+		},
+		html: false,
+		position: {
+			sticky: false,
+		},
+		spacing: {
+			margin: true,
+			padding: true,
+		},
+		typography: {
+			fontSize: true,
+			lineHeight: true,
+		},
+	},
 	save({ attributes: { hasToggle } }) {
 		return (
 			<div {...useBlockProps.save()}>
