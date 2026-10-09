@@ -5,7 +5,6 @@ import {
 	useBlockProps,
 } from '@wordpress/block-editor';
 import { PanelBody, ToggleControl } from '@wordpress/components';
-import { dispatch, useSelect } from '@wordpress/data';
 import { __ } from '@wordpress/i18n';
 
 // Internal dependencies.
@@ -16,38 +15,6 @@ const Edit = (props) => {
 		attributes: { hasToggle },
 		setAttributes,
 	} = props;
-
-	const details = useSelect((select) => {
-		const currentBlocks = select('core/block-editor').getBlocks(
-			props.clientId
-		);
-
-		return currentBlocks;
-	});
-
-	const toggleAllSections = (evt) => {
-		if (false === evt.target.ariaExpanded) {
-			details.forEach((detail) => {
-				dispatch('core/block-editor').updateBlockAttributes(
-					detail.clientId,
-					{ isOpen: true }
-				);
-			});
-
-			evt.target.innerText = __('Close all', 'show-hide-section-block');
-			evt.target.ariaExpanded = true;
-		} else {
-			details.forEach((detail) => {
-				dispatch('core/block-editor').updateBlockAttributes(
-					detail.clientId,
-					{ isOpen: false }
-				);
-			});
-
-			evt.target.innerText = __('Open all', 'show-hide-section-block');
-			evt.target.ariaExpanded = false;
-		}
-	};
 
 	return (
 		<>
@@ -78,11 +45,9 @@ const Edit = (props) => {
 			</InspectorControls>
 			<div {...useBlockProps()}>
 				{hasToggle && (
-					<button
-						className="toggle-all"
-						aria-expanded="false"
-						onClick={toggleAllSections}
-					>
+					// Sections are always expanded in the editor, so the
+					// button is a preview of the front-end control only.
+					<button className="toggle-all" aria-expanded="false">
 						{__('Open all', 'show-hide-section-block')}
 					</button>
 				)}
