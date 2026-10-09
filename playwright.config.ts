@@ -11,7 +11,7 @@ import { defineConfig, devices } from '@playwright/test';
 // utils-playwright reads process.env.WP_BASE_URL (default 8889) for requestUtils
 // REST calls, so the browser and the REST client would otherwise target two
 // different WordPress instances.
-process.env.WP_BASE_URL = process.env.WP_BASE_URL || 'http://localhost:8891';
+process.env.WP_BASE_URL = process.env.WP_BASE_URL || 'http://localhost:8950';
 const baseURL = process.env.WP_BASE_URL;
 
 export default defineConfig({
@@ -24,7 +24,9 @@ export default defineConfig({
 	fullyParallel: true,
 	forbidOnly: !!process.env.CI,
 	retries: process.env.CI ? 2 : 0,
-	workers: process.env.CI ? 1 : undefined,
+	// Every test shares one admin user, so the persisted editor preferences
+	// (for example the dismissed welcome guide) race across parallel workers.
+	workers: 1,
 	reporter: [['html', { outputFolder: './tests/e2e/playwright-report' }]],
 	use: {
 		baseURL,

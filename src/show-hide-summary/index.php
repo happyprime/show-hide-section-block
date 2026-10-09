@@ -7,6 +7,10 @@
 
 namespace HappyPrime\Blocks\ShowHideSummary;
 
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 add_action( 'init', __NAMESPACE__ . '\register' );
 
 /**

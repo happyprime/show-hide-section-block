@@ -38,22 +38,34 @@ The HTML output for the group is:
 
 An option is provided in the block's side panel to toggle an "Open all"/"Close all" button. If this is toggled on for a block, an additional `<button>` element will be inserted and JavaScript will be used on the front-end to control the show/hide behavior of all `<details>` elements in the group at once.
 
-If the toggle is off, no JavaScript is loaded on the front end and only the browser's default behavior is used for opening and closing `<details>` elements.
+The same script opens a section when the URL hash points at its anchor or at an element inside it. A page with no toggle and no anchored section loads no JavaScript, and the browser opens and closes each `<details>` element on its own.
 
-## Development & testing
-
-A local WordPress environment is provided via [`@wordpress/env`](https://developer.wordpress.org/block-editor/reference-guides/packages/packages-env/) on port `8891`:
+## Development
 
 	npm install
-	npm run build
 	npm run env:start
 
-End-to-end tests use [Playwright](https://playwright.dev/) and assert the core functionality in both the editor and on the front end (the block scaffolds and publishes, the native `<details>`/`<summary>` interface toggles, and the group "Open all"/"Close all" control works):
+`env:start` builds the blocks, starts WordPress 7.1 with [`@wordpress/env`](https://developer.wordpress.org/block-editor/reference-guides/packages/packages-env/) at http://localhost:8950 (`admin` / `password`), and runs `.dev/seed.php`. The seed activates Twenty Twenty-Five, sets pretty permalinks, and creates four pages:
+
+* **FAQ with open all**: a group with the toggle, a formatted summary, a coloured section, and an anchored section with a link to it.
+* **Anchors without a toggle**: anchored sections and an anchored paragraph inside a section, with links that open them.
+* **No front-end script**: a group with no toggle and no anchors, so `view.js` is not loaded.
+* **2.x markup**: markup as 2.0.3 saved it. Open it in the editor to see the migration.
+
+A page that already exists is left alone. Delete it to reseed. `npm run env:stop` stops the site; `npm run env:destroy` removes it.
+
+Checks:
+
+	composer install
+	composer phpcs
+	composer phpstan
+	npm run lint:js
+	npm run lint:package
+
+End-to-end tests use [Playwright](https://playwright.dev/). They start wp-env if it is not running and stop it afterward; a site started with `npm run env:start` is reused and left running.
 
 	npx playwright install chromium   # first run only
 	npm run test:e2e
-
-`npm run test:e2e` starts wp-env automatically if it is not already running and stops it again afterward; an environment started manually with `npm run env:start` is reused and left running.
 
 ## Changelog
 

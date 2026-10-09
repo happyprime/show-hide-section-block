@@ -36,9 +36,17 @@ setup('authenticate as admin', async ({ page, baseURL }) => {
 	// Now we should be at the login page or already logged in.
 	const loginForm = page.locator('#loginform');
 	if ((await loginForm.count()) > 0) {
+		// wp-login.php focuses and selects the username field on a timer
+		// after load. Filling before that fires lets the timer steal focus
+		// mid-fill, so the password lands in the username field. Wait for
+		// the focus to settle first.
+		await expect(page.locator('#user_login')).toBeFocused();
+
 		// Fill in login credentials (wp-env defaults).
 		await page.locator('#user_login').fill('admin');
 		await page.locator('#user_pass').fill('password');
+		await expect(page.locator('#user_login')).toHaveValue('admin');
+		await expect(page.locator('#user_pass')).toHaveValue('password');
 		await page.locator('#wp-submit').click();
 
 		// Wait for dashboard to load.

@@ -22,7 +22,7 @@ const isUp = async ( url: string ): Promise< boolean > => {
 };
 
 export default async function globalSetup() {
-	const url = process.env.WP_BASE_URL || 'http://localhost:8891';
+	const url = process.env.WP_BASE_URL || 'http://localhost:8950';
 
 	if ( ! ( await isUp( url ) ) ) {
 		execSync( 'npm run env:start', { stdio: 'inherit' } );

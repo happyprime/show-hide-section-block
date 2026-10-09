@@ -16,6 +16,7 @@ import type { Page } from '@playwright/test';
 const SUMMARY_TEXT = 'Toggle this section heading';
 const DETAILS_TEXT = 'This content is hidden until the section is opened.';
 const SECTION = 'details.wp-block-happyprime-show-hide-section';
+const VIEW_SCRIPT = 'script[src*="show-hide-group/view.js"]';
 
 /**
  * Build one section's block tree with a summary and a paragraph of details.
@@ -77,9 +78,15 @@ test.describe( 'Show / Hide Section block — front end', () => {
 
 		// The summary is always visible; a closed native <details> hides its
 		// non-summary children, so the details content is not.
-		const summary = details.locator( 'summary' ).first();
+		// The summary block renders exactly one <summary>: its save output
+		// must not wrap the text in a second, nested <summary>.
+		const summary = details.locator( 'summary' );
+		await expect( summary ).toHaveCount( 1 );
 		await expect( summary ).toBeVisible();
 		await expect( summary ).toContainText( SUMMARY_TEXT );
+		await expect( summary ).toHaveClass(
+			/wp-block-happyprime-show-hide-summary/
+		);
 		expect( await details.getAttribute( 'open' ) ).toBeNull();
 		await expect( page.getByText( DETAILS_TEXT ) ).toBeHidden();
 
@@ -117,14 +124,118 @@ test.describe( 'Show / Hide Section block — front end', () => {
 		await expect( page.getByText( 'First hidden body.' ) ).toBeHidden();
 		await expect( page.getByText( 'Second hidden body.' ) ).toBeHidden();
 
+		await expect( toggleAll ).toHaveText( 'Open all' );
+		await expect( toggleAll ).toHaveAttribute( 'aria-expanded', 'false' );
+
 		// Opening all reveals both sections' content.
 		await toggleAll.click();
 		await expect( page.getByText( 'First hidden body.' ) ).toBeVisible();
 		await expect( page.getByText( 'Second hidden body.' ) ).toBeVisible();
+		await expect( toggleAll ).toHaveText( 'Close all' );
+		await expect( toggleAll ).toHaveAttribute( 'aria-expanded', 'true' );
 
 		// Toggling again collapses them back.
 		await toggleAll.click();
 		await expect( page.getByText( 'First hidden body.' ) ).toBeHidden();
 		await expect( page.getByText( 'Second hidden body.' ) ).toBeHidden();
+		await expect( toggleAll ).toHaveText( 'Open all' );
+		await expect( toggleAll ).toHaveAttribute( 'aria-expanded', 'false' );
+	} );
+
+	test( 'the view script only loads when a block needs it', async ( {
+		admin,
+		editor,
+		page,
+	} ) => {
+		// No toggle and no anchors: nothing on the page needs JavaScript.
+		const url = await publish( admin, editor, page, {
+			name: 'happyprime/show-hide-group',
+			innerBlocks: [ section( SUMMARY_TEXT, DETAILS_TEXT ) ],
+		} );
+		await page.goto( url );
+
+		await expect( page.locator( SECTION ) ).toBeVisible();
+		await expect( page.locator( VIEW_SCRIPT ) ).toHaveCount( 0 );
+	} );
+
+	test( 'a section opens when its anchor is in the URL', async ( {
+		admin,
+		editor,
+		page,
+	} ) => {
+		const errors: Error[] = [];
+		page.on( 'pageerror', ( error ) => errors.push( error ) );
+
+		// No toggle: only the anchored section justifies loading the script.
+		const url = await publish( admin, editor, page, {
+			name: 'happyprime/show-hide-group',
+			innerBlocks: [
+				section( 'First section', 'First hidden body.' ),
+				{
+					...section( 'Second section', 'Second hidden body.' ),
+					attributes: { anchor: 'second-section' },
+				},
+			],
+		} );
+
+		// A hash that is not a valid selector (`#1`) and matches nothing is
+		// ignored rather than thrown.
+		await page.goto( `${ url }#1` );
+
+		await expect( page.locator( SECTION ) ).toHaveCount( 2 );
+		await expect( page.locator( VIEW_SCRIPT ) ).toHaveCount( 1 );
+		await expect( page.getByText( 'First hidden body.' ) ).toBeHidden();
+		await expect( page.getByText( 'Second hidden body.' ) ).toBeHidden();
+
+		// Changing the hash in place opens the newly targeted section.
+		await page.evaluate( () => {
+			window.location.hash = '#second-section';
+		} );
+		await expect( page.getByText( 'Second hidden body.' ) ).toBeVisible();
+
+		// Loading the page with the hash opens only the anchored section.
+		await page.reload();
+		await expect( page.getByText( 'Second hidden body.' ) ).toBeVisible();
+		await expect( page.getByText( 'First hidden body.' ) ).toBeHidden();
+
+		expect( errors ).toEqual( [] );
+	} );
+
+	test( 'a section opens when the anchor is on content inside it', async ( {
+		admin,
+		editor,
+		page,
+	} ) => {
+		const url = await publish( admin, editor, page, {
+			name: 'happyprime/show-hide-group',
+			innerBlocks: [
+				{
+					name: 'happyprime/show-hide-section',
+					attributes: { anchor: 'outer-section' },
+					innerBlocks: [
+						{
+							name: 'happyprime/show-hide-summary',
+							attributes: { summary: SUMMARY_TEXT },
+						},
+						{
+							name: 'happyprime/show-hide-details',
+							innerBlocks: [
+								{
+									name: 'core/paragraph',
+									attributes: {
+										anchor: 'inner-target',
+										content: DETAILS_TEXT,
+									},
+								},
+							],
+						},
+					],
+				},
+			],
+		} );
+
+		await page.goto( `${ url }#inner-target` );
+
+		await expect( page.getByText( DETAILS_TEXT ) ).toBeVisible();
 	} );
 } );
