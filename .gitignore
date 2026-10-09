@@ -7,6 +7,7 @@ vendor
 /tests/e2e/playwright-report/
 /tests/e2e/.auth/*.json
 /tests/e2e/.env-started-by-tests
+/artifacts/
 
 # wp-env
 /.wp-env.override.json
