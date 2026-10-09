@@ -45,7 +45,7 @@ The HTML output for the group is:
 
 An option is provided in the block's side panel to toggle an "Open all"/"Close all" button. If this is toggled on for a block, an additional `<button>` element will be inserted and JavaScript will be used on the front-end to control the show/hide behavior of all `<details>` elements in the group at once.
 
-If the toggle is off, no JavaScript is loaded on the front end and only the browser's default behavior is used for opening and closing `<details>` elements.
+The same script opens a section when the URL hash points at its anchor or at an element inside it. A page with no toggle and no anchored section loads no JavaScript, and the browser opens and closes each `<details>` element on its own.
 
 ## Changelog
 
