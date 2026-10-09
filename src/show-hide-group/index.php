@@ -26,6 +26,7 @@ function register(): void {
 
 	wp_register_script(
 		VIEW_SCRIPT_HANDLE,
+		// @phpstan-ignore argument.type (plugins_url() does not return an empty string.)
 		plugins_url( 'build/show-hide-group/view.js', HP_SHS_PLUGIN_FILE ),
 		$asset_data['dependencies'],
 		$asset_data['version'],
@@ -49,7 +50,8 @@ function maybe_enqueue_script( $pre_render, array $parsed_block ) {
 	$block_name = $parsed_block['blockName'] ?? null;
 
 	if ( 'happyprime/show-hide-group' === $block_name ) {
-		$needs_script = ! empty( $parsed_block['attrs']['hasToggle'] );
+		$attrs        = $parsed_block['attrs'] ?? [];
+		$needs_script = is_array( $attrs ) && ! empty( $attrs['hasToggle'] );
 	} elseif ( 'happyprime/show-hide-section' === $block_name ) {
 		$needs_script = section_has_anchor( $parsed_block );
 	} else {
@@ -84,7 +86,7 @@ function section_has_anchor( array $parsed_block ): bool {
 
 	$tags = new \WP_HTML_Tag_Processor( $inner_html );
 
-	if ( ! $tags->next_tag( 'details' ) ) {
+	if ( ! $tags->next_tag( [ 'tag_name' => 'details' ] ) ) {
 		return false;
 	}
 
