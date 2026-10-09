@@ -77,9 +77,15 @@ test.describe( 'Show / Hide Section block — front end', () => {
 
 		// The summary is always visible; a closed native <details> hides its
 		// non-summary children, so the details content is not.
-		const summary = details.locator( 'summary' ).first();
+		// The summary block renders exactly one <summary>: its save output
+		// must not wrap the text in a second, nested <summary>.
+		const summary = details.locator( 'summary' );
+		await expect( summary ).toHaveCount( 1 );
 		await expect( summary ).toBeVisible();
 		await expect( summary ).toContainText( SUMMARY_TEXT );
+		await expect( summary ).toHaveClass(
+			/wp-block-happyprime-show-hide-summary/
+		);
 		expect( await details.getAttribute( 'open' ) ).toBeNull();
 		await expect( page.getByText( DETAILS_TEXT ) ).toBeHidden();
 
