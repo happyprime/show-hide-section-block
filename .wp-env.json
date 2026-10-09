@@ -1,11 +1,10 @@
 {
-	"core": "WordPress/WordPress#7.1",
-	"phpVersion": "8.2",
-	"port": 8891,
+	"$schema": "https://schemas.wp.org/trunk/wp-env.json",
+	"core": "WordPress/WordPress#7.1-branch",
+	"phpVersion": "8.4",
+	"port": 8950,
 	"testsEnvironment": false,
-	"plugins": [
-		"."
-	],
+	"plugins": [ "." ],
 	"config": {
 		"WP_DEBUG": true,
 		"WP_DEBUG_LOG": true,

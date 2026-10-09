@@ -11,7 +11,7 @@ import { defineConfig, devices } from '@playwright/test';
 // utils-playwright reads process.env.WP_BASE_URL (default 8889) for requestUtils
 // REST calls, so the browser and the REST client would otherwise target two
 // different WordPress instances.
-process.env.WP_BASE_URL = process.env.WP_BASE_URL || 'http://localhost:8891';
+process.env.WP_BASE_URL = process.env.WP_BASE_URL || 'http://localhost:8950';
 const baseURL = process.env.WP_BASE_URL;
 
 export default defineConfig({
