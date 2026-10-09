@@ -11,6 +11,10 @@ const handleToggleButtons = () => {
 	);
 
 	toggles.forEach((toggle) => {
+		// The saved label is untranslated so that saved markup does not
+		// depend on the editor's locale.
+		toggle.textContent = __('Open all', 'show-hide-section-block');
+
 		toggle.addEventListener('click', () => {
 			const sections =
 				toggle.parentElement.querySelectorAll(SECTION_SELECTOR);
