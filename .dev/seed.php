@@ -39,6 +39,7 @@ foreach ( $hp_shs_pages as $hp_shs_slug => $hp_shs_page ) {
 			[
 				'post_type'    => 'page',
 				'post_status'  => 'publish',
+				'post_author'  => 1,
 				'post_name'    => $hp_shs_slug,
 				'post_title'   => $hp_shs_page[0],
 				'post_content' => (string) file_get_contents( __DIR__ . '/content/' . $hp_shs_page[1] ),
