@@ -30,6 +30,7 @@
     "@wordpress/dependency-extraction-webpack-plugin": "^6.48.0",
     "@wordpress/e2e-test-utils-playwright": "1.46.0",
     "@wordpress/env": "^11.7.0",
+    "@wordpress/eslint-plugin": "^27.1.0",
     "@wordpress/npm-package-json-lint-config": "^5.48.0",
     "babel-loader": "^10.1.1",
     "copy-webpack-plugin": "^14.0.0",
@@ -40,9 +41,9 @@
   "scripts": {
     "build": "webpack --mode production",
     "start": "webpack --mode development --watch",
-    "lint": "eslint .",
-    "fix": "eslint . --fix",
-    "lint:package": "node ./node_modules/npm-package-json-lint/dist/cli.js ./",
+    "lint:js": "eslint .",
+    "fix:js": "eslint . --fix",
+    "lint:package": "node ./node_modules/npm-package-json-lint/dist/cli.js ./package.json",
     "test:e2e": "playwright test",
     "test:e2e:ui": "playwright test --ui",
     "env:start": "wp-env start",
@@ -51,8 +52,5 @@
     "env:destroy": "wp-env destroy",
     "env:cli": "wp-env run cli",
     "env:logs": "wp-env logs"
-  },
-  "npmpackagejsonlint": {
-    "extends": "@wordpress/npm-package-json-lint-config"
   }
 }
