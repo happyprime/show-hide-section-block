@@ -51,7 +51,16 @@ module.exports = {
 				use: {
 					loader: 'babel-loader',
 					options: {
-						presets: ['@babel/preset-env', '@babel/preset-react'],
+						presets: [
+							'@babel/preset-env',
+							// Babel 8 defaults to the automatic runtime, which
+							// needs the react-jsx-runtime script from WordPress
+							// 6.6. The plugin supports 6.4.
+							[
+								'@babel/preset-react',
+								{ runtime: 'classic', development: false },
+							],
+						],
 						plugins: ['@babel/plugin-transform-runtime'],
 					},
 				},
