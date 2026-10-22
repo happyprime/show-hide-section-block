@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="256" height="256" viewBox="0 0 256 256" role="img" aria-labelledby="title desc">
+<title id="title">Show / Hide Section Block</title>
+<desc id="desc">A white geometric icon on a circular color badge.</desc>
+<defs>
+  <linearGradient id="badge-show-hide-section-block" x1="100%" y1="0%" x2="0%" y2="100%">
+    <stop offset="0%" stop-color="#FF9F02"/>
+    <stop offset="28%" stop-color="#F28C00"/>
+    <stop offset="100%" stop-color="#D45F00"/>
+  </linearGradient>
+<mask id="notch-show-hide-section-block"><rect width="256" height="256" fill="#fff"/><polygon points="201.2,58.4 359.1,32.3 370.6,-111.6 226.7,-99.5" fill="#000" stroke="#000" stroke-width="6.6" stroke-linejoin="round"/></mask>
+</defs>
+<circle cx="128" cy="128" r="118" fill="url(#badge-show-hide-section-block)" mask="url(#notch-show-hide-section-block)"/>
+
+  <g class="glyph" transform="translate(128 128) scale(0.85) translate(-128 -128)">
+<!-- Solid, eye-marked visible section over a dashed hidden section. -->
+  <rect x="65" y="65" width="126" height="55" rx="12" fill="none" stroke="#fff" stroke-width="10"/>
+  <path d="M94 92.5c11-14 25-20 34-20s23 6 34 20c-11 14-25 20-34 20s-23-6-34-20Z" fill="none" stroke="#fff" stroke-width="7.5" stroke-linejoin="round"/>
+  <circle cx="128" cy="92.5" r="8" fill="#fff"/>
+  <rect x="65" y="143" width="126" height="50" rx="12" fill="none" stroke="#fff" stroke-width="10" stroke-dasharray="15 11" opacity="0.95"/>
+  </g>
+</svg>
